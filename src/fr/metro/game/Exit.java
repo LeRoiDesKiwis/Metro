@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exit {
-    private List<Location> locations = new ArrayList<>();
+    private Location in;
+    private Location out;
+
+    public Exit(Location in, Location out) {
+        this.in = in;
+        this.out = out;
+    }
 
 }
