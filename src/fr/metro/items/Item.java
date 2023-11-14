@@ -8,4 +8,11 @@ public abstract class Item {
         this.description = description ;
     }
 
+    public void printItem (){
+        System.out.println("- " + this.name + " : " + this.description);
+    }
+
+    public void printItemName (){
+        System.out.println("    " + this.name);
+    }
 }
