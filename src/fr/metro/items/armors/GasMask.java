@@ -1,4 +1,6 @@
-package fr.metro.items;
+package fr.metro.items.armors;
+
+import fr.metro.items.Filter;
 
 public class GasMask extends Armor {
     private Filter filter;

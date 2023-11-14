@@ -1,6 +1,8 @@
-package fr.metro.items;
+package fr.metro.items.armors;
 
-public abstract class Armor extends Item{
+import fr.metro.items.Item;
+
+public abstract class Armor extends Item {
     private final int placement;
     public Armor(String name, String description, int placement){
         super(name, description);

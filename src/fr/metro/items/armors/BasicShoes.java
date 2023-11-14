@@ -1,4 +1,4 @@
-package fr.metro.items;
+package fr.metro.items.armors;
 
 public class BasicShoes extends Armor{
     public BasicShoes(){

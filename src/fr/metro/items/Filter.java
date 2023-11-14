@@ -1,6 +1,8 @@
 package fr.metro.items;
 
-public class Filter extends Item{
+import fr.metro.items.Item;
+
+public class Filter extends Item {
     private final int CAPACITY = 50;
     private int timeLeft ;
     public Filter(){
