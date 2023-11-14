@@ -10,10 +10,8 @@ public abstract class Weapon extends Item {
         return name + " : " + description + " " + "This weapon make " + damage + " damages.";
     }
 
-    public void attack(GameCharacter c){
-        if(c != null){
-            //TODO c.hp = c.hp - this.damage;
-        }
+    public void attack(GameCharacter character){
+        if(character != null) character.damage(damage);
     }
 
     public Weapon(String name, String description, int damage){
