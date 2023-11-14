@@ -10,4 +10,11 @@ public abstract class GameCharacter {
         this.name = name;
         this.inventory = inventory;
     }
+
+    public abstract void interact(Player player);
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
