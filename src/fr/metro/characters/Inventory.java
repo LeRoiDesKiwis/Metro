@@ -1,6 +1,6 @@
 package fr.metro.characters;
 
-import fr.metro.Item;
+import fr.metro.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;

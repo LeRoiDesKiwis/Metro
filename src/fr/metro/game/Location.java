@@ -1,6 +1,6 @@
 package fr.metro.game;
 
-import fr.metro.Item;
+import fr.metro.items.Item;
 import fr.metro.characters.GameCharacter;
 
 import java.util.ArrayList;
