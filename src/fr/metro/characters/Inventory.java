@@ -34,17 +34,17 @@ public class Inventory {
         }
         System.out.println("[--- Equipment ---]");
         System.out.println("     <Head>");
-        equipment[0].printItemName();
-        System.out.println("-----------------");
+        this.equipment[0].printItemName();
+        System.out.println("-------------------");
         System.out.println("     <Torso>");
-        equipment[1].printItemName();
-        System.out.println("-----------------");
+        this.equipment[1].printItemName();
+        System.out.println("-------------------");
         System.out.println("     <Legs>");
-        equipment[2].printItemName();
-        System.out.println("-----------------");
+        this.equipment[2].printItemName();
+        System.out.println("-------------------");
         System.out.println("     <Feet>");
-        equipment[3].printItemName();
-        System.out.println("-----------------");
+        this.equipment[3].printItemName();
+        System.out.println("-------------------");
     }
 
 }
