@@ -8,7 +8,7 @@ public class Narration {
 
     private String question;
     private Map<String, Narration> continuity = new HashMap<>();
-    private String unknownAnswer = "Wtf are you saying bro";
+    private String unknownAnswer;
 
     public Narration(String question, Map<String, Narration> continuity, String error){
         this.question = question;
@@ -30,10 +30,14 @@ public class Narration {
         else return new Narration(unknownAnswer);
     }
 
+    public boolean hasNext() {
+        return !continuity.isEmpty();
+    }
+
     public static class NarrationBuilder{
         private String question;
         private Map<String, Narration> continuity = new HashMap<>();
-        private String error;
+        private String error = "Wtf are you saying bro";
 
         public NarrationBuilder(String question){
             this.question = question;

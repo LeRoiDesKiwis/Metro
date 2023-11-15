@@ -1,12 +1,40 @@
 package fr.metro.characters.friends;
 
 import fr.metro.characters.Inventory;
+import fr.metro.characters.Player;
 
 public class SpeakingNPC extends FriendlyCharacter{
 
-    private Narration narration;
+    private Narration startNarration;
+    private Narration current;
 
     public SpeakingNPC(String name, int hp, Inventory inventory, String introductionLine, Narration narration) {
         super(name, hp, inventory, introductionLine);
+        this.startNarration = narration;
+        this.current = startNarration;
+    }
+
+    @Override
+    public void interact(Player player, String[] args) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String arg : args) {
+            stringBuilder.append(arg).append(" ");
+        }
+        current = current.ask(stringBuilder.toString().trim());
+        System.out.println(current);
+    }
+
+    @Override
+    public void introduce(Player player) {
+        super.introduce(player, current.toString());
+    }
+
+    public void reset(Player player){
+        current = startNarration;
+        introduce(player);
+    }
+
+    public boolean hasNext() {
+        return current.hasNext();
     }
 }
