@@ -11,7 +11,7 @@ public abstract class Weapon extends Item {
     }
 
     public void attack(GameCharacter character){
-        if(character != null) character.damage(damage);
+        character.damage(damage);
     }
 
     public Weapon(String name, String description, int damage){
