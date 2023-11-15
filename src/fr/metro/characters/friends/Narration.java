@@ -2,11 +2,10 @@ package fr.metro.characters.friends;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class Narration {
 
-    private String question;
+    private final String question;
     private Map<String, Narration> continuity = new HashMap<>();
     private String unknownAnswer;
 
@@ -36,14 +35,21 @@ public class Narration {
 
     public static class NarrationBuilder{
         private String question;
-        private Map<String, Narration> continuity = new HashMap<>();
+        private final Map<String, Narration> continuity = new HashMap<>();
         private String error = "Wtf are you saying bro";
 
         public NarrationBuilder(String question){
             this.question = question;
         }
+        public NarrationBuilder(){
+        }
 
-        public NarrationBuilder unknownAnswer(String error){
+        public NarrationBuilder question(String question){
+            this.question = question;
+            return this;
+        }
+
+        public NarrationBuilder error(String error){
             this.error = error;
             return this;
         }

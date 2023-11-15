@@ -5,7 +5,7 @@ import fr.metro.characters.Player;
 
 public class SpeakingNPC extends FriendlyCharacter{
 
-    private Narration startNarration;
+    private final Narration startNarration;
     private Narration current;
 
     public SpeakingNPC(String name, int hp, Inventory inventory, String introductionLine, Narration narration) {
