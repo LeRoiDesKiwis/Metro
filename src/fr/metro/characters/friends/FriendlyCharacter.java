@@ -11,10 +11,17 @@ public abstract class FriendlyCharacter extends GameCharacter {
         this.introductionLine = introductionLine;
     }
 
-    public void interact(Player player) {
-        System.out.println(getClass().getSimpleName().toLowerCase()+" "+this);
+    protected void introduce(Player player, String introductionLine){
         System.out.println(introductionLine.replace("[player]", player.toString())
                 .replace("[name]", toString())
                 .replace("[role]", getClass().getSimpleName().toLowerCase()));
+    }
+
+    public void introduce(Player player){
+        introduce(player, this.introductionLine);
+    }
+
+    public void interact(Player player, String[] args) {
+        introduce(player);
     }
 }

@@ -11,7 +11,7 @@ public abstract class GameCharacter {
         this.inventory = inventory;
     }
 
-    public abstract void interact(Player player);
+    public abstract void interact(Player player, String[] args);
 
     /**
      * Remove {@code damage} hps from the player. <p/>

@@ -7,7 +7,7 @@ public class Player extends GameCharacter {
     }
 
     @Override
-    public void interact(Player player) {
+    public void interact(Player player, String[] args) {
 
     }
 }

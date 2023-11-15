@@ -9,7 +9,7 @@ public abstract class Enemy extends GameCharacter {
         super(name, hp, inventory);
     }
 
-    public void interact(Player player){
+    public void interact(Player player, String[] args){
         attack(player);
     }
 
