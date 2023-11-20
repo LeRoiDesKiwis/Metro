@@ -6,8 +6,4 @@ public class Player extends GameCharacter {
         super(name, hp, new Inventory());
     }
 
-    @Override
-    public void interact(Player player, String[] args) {
-
-    }
 }
