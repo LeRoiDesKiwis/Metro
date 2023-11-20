@@ -5,13 +5,13 @@ public abstract class Command {
     protected final String description;
     protected final String usage;
 
-    /**
-     * @param description : what is the command for ?
-     * @param usage : how to use it ?
-     */
     public Command(String description, String usage) {
         this.description = description;
         this.usage = usage;
+    }
+
+    public Command(String description){
+        this(description, "");
     }
 
     /**
