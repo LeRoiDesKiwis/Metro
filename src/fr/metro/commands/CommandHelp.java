@@ -18,11 +18,12 @@ public class CommandHelp extends Command{
 
     private void printUsage(String commandName, Command command){
         if(command.arguments.length == 0) return;
-        StringBuilder usage = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (CommandArgument argument : command.arguments) {
-            usage.append(argument).append(" ");
+            stringBuilder.append(argument).append(" ");
         }
-        System.out.println("\t- USAGE: " + commandName + " " + usage);
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        System.out.println("\t- USAGE: " + commandName + " " + stringBuilder);
     }
 
     private void helpCommand(String commandName, Command command){
