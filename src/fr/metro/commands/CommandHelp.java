@@ -8,6 +8,19 @@ public class CommandHelp extends Command{
         super("show commands with their description");
         this.commandManager = commandManager;
     }
+    private void printExample(Command command) {
+        if(command.example.isBlank()) return;
+        System.out.println("\t- EXAMPLE: "+command.example);
+    }
+
+    private void printUsage(String commandName, Command command){
+        if(command.arguments.length == 0) return;
+        StringBuilder usage = new StringBuilder();
+        for (CommandArgument argument : command.arguments) {
+            usage.append(argument).append(" ");
+        }
+        System.out.println("\t- USAGE: " + commandName + " " + usage);
+    }
 
     @Override
     public boolean execute(String[] args) {
@@ -23,16 +36,8 @@ public class CommandHelp extends Command{
             System.out.println("- "+entry.getKey());
             Command command = entry.getValue();
             System.out.println("\t- DESCRIPTION: "+ command.description);
-            if(command.arguments.length != 0) {
-                StringBuilder usage = new StringBuilder();
-                for (CommandArgument argument : command.arguments) {
-                    usage.append(argument).append(" ");
-                }
-                System.out.println("\t- USAGE: " + entry.getKey() + " " + usage);
-            }
-            if(!command.example.isBlank()){
-                System.out.println("\t- EXAMPLE: "+command.example);
-            }
+            printUsage(entry.getKey(), command);
+            printExample(command);
         });
 
         return true;
