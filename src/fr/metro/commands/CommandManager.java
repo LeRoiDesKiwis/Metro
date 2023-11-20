@@ -12,9 +12,9 @@ public class CommandManager {
         commands.put("help", new CommandHelp(this));
         commands.put("look", new CommandLook());
         commands.put("attack", new CommandAttack());
-        /*commands.put("take", new CommandTake());
+        commands.put("take", new CommandTake());
         commands.put("use", new CommandUse());
-        commands.put("quit", new CommandQuit());*/
+        commands.put("quit", new CommandQuit());
     }
 
     public Stream<Map.Entry<String, Command>> stream(){
