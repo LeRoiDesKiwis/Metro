@@ -1,11 +1,14 @@
 package fr.metro.commands;
 
+import java.util.Map;
+import java.util.Optional;
+
 public class CommandHelp extends Command{
 
     private final CommandManager commandManager;
 
     public CommandHelp(CommandManager commandManager){
-        super("show commands with their description");
+        super("show commands with their description", new CommandArgument("command", CommandArgument.ArgumentType.OPTIONAL));
         this.commandManager = commandManager;
     }
     private void printExample(Command command) {
@@ -22,24 +25,35 @@ public class CommandHelp extends Command{
         System.out.println("\t- USAGE: " + commandName + " " + usage);
     }
 
+    private void helpCommand(String commandName, Command command){
+        System.out.println("- " + commandName);
+        System.out.println("\t- DESCRIPTION: " + command.description);
+        printUsage(commandName, command);
+        printExample(command);
+    }
+
     @Override
     public boolean execute(String[] args) {
 
-        System.out.println("---- COMMANDS ----");
-        StringBuilder builder = new StringBuilder();
-        for(CommandArgument.ArgumentType argumentType : CommandArgument.ArgumentType.values()){
-            builder.append(argumentType.start).append(argumentType.end).append(" = ").append(argumentType.toString().toLowerCase()).append(" ");
+        if(args.length == 0) {
+
+            System.out.println("---- COMMANDS ----");
+            StringBuilder builder = new StringBuilder();
+            for (CommandArgument.ArgumentType argumentType : CommandArgument.ArgumentType.values()) {
+                builder.append(argumentType.start).append(argumentType.end).append(" = ").append(argumentType.toString().toLowerCase()).append(", ");
+            }
+            builder.deleteCharAt(builder.length() - 1);
+            builder.deleteCharAt(builder.length() - 1);
+            System.out.println("NOTE: in usage, " + builder);
+
+            commandManager.stream().forEach(entry -> helpCommand(entry.getKey(), entry.getValue()));
+            return true;
+        } else {
+            String commandName = args[0];
+            Optional<Command> commandOpt = commandManager.stream().filter(entry -> entry.getKey().equals(commandName)).map(Map.Entry::getValue).findAny();
+            commandOpt.ifPresent(command -> helpCommand(commandName, command));
+            return commandOpt.isPresent();
         }
-        System.out.println("NOTE: in usage, "+ builder);
 
-        commandManager.stream().forEach(entry -> {
-            System.out.println("- "+entry.getKey());
-            Command command = entry.getValue();
-            System.out.println("\t- DESCRIPTION: "+ command.description);
-            printUsage(entry.getKey(), command);
-            printExample(command);
-        });
-
-        return true;
     }
 }
