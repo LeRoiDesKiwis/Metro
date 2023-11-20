@@ -13,12 +13,21 @@ public class CommandHelp extends Command{
     public boolean execute(String[] args) {
 
         System.out.println("---- COMMANDS ----");
-        System.out.println("NOTE: in usage, [] = optional and <> = required");
+        StringBuilder builder = new StringBuilder();
+        for(CommandArgument.ArgumentType argumentType : CommandArgument.ArgumentType.values()){
+            builder.append(argumentType.start).append(argumentType.end).append(" = ").append(argumentType.toString().toLowerCase()).append(" ");
+        }
+        System.out.println("NOTE: in usage, "+ builder);
+
         commandManager.stream().forEach(entry -> {
             System.out.println("- "+entry.getKey());
             Command command = entry.getValue();
             System.out.println("\t- DESCRIPTION: "+ command.description);
-            System.out.println("\t- USAGE: "+ entry.getKey()+" "+command.usage);
+            StringBuilder usage = new StringBuilder();
+            for(CommandArgument argument : command.arguments){
+                usage.append(argument).append(" ");
+            }
+            System.out.println("\t- USAGE: "+ entry.getKey()+" "+usage);
         });
 
         return true;

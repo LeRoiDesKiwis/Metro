@@ -3,15 +3,15 @@ package fr.metro.commands;
 public abstract class Command {
 
     protected final String description;
-    protected final String usage;
+    protected final CommandArgument[] arguments;
 
-    public Command(String description, String usage) {
+    public Command(String description, CommandArgument... arguments) {
         this.description = description;
-        this.usage = usage;
+        this.arguments = arguments;
     }
 
     public Command(String description){
-        this(description, "");
+        this(description, new CommandArgument[]{});
     }
 
     /**
