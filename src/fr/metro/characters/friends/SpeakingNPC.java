@@ -5,13 +5,13 @@ import fr.metro.characters.Player;
 
 public class SpeakingNPC extends FriendlyCharacter{
 
-    private final Narration startNarration;
-    private Narration current;
+    private final Dialogue startDialogue;
+    private Dialogue current;
 
-    public SpeakingNPC(String name, int hp, Inventory inventory, String introductionLine, Narration narration) {
+    public SpeakingNPC(String name, int hp, Inventory inventory, String introductionLine, Dialogue dialogue) {
         super(name, hp, inventory, introductionLine);
-        this.startNarration = narration;
-        this.current = startNarration;
+        this.startDialogue = dialogue;
+        this.current = startDialogue;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SpeakingNPC extends FriendlyCharacter{
     }
 
     public void reset(Player player){
-        current = startNarration;
+        current = startDialogue;
         introduce(player);
     }
 
