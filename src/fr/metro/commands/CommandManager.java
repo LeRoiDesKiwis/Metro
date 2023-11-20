@@ -2,12 +2,18 @@ package fr.metro.commands;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class CommandManager {
 
     private final Map<String, Command> commands = new HashMap<>();
 
     public CommandManager(){
+        commands.put("help", new CommandHelp(this));
+    }
+
+    public Stream<Map.Entry<String, Command>> stream(){
+        return commands.entrySet().stream();
     }
 
     /**

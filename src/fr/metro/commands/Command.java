@@ -2,8 +2,8 @@ package fr.metro.commands;
 
 public abstract class Command {
 
-    private final String description;
-    private final String usage;
+    protected final String description;
+    protected final String usage;
 
     /**
      * @param description : what is the command for ?
