@@ -1,5 +1,8 @@
 package fr.metro.commands;
 
+import fr.metro.commands.manager.CommandArgument;
+import fr.metro.commands.manager.CommandManager;
+
 import java.util.Map;
 import java.util.Optional;
 

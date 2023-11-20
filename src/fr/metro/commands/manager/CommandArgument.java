@@ -1,4 +1,4 @@
-package fr.metro.commands;
+package fr.metro.commands.manager;
 
 public class CommandArgument {
 
@@ -22,8 +22,8 @@ public class CommandArgument {
     public enum ArgumentType{
         OPTIONAL("[", "]"), REQUIRED("<", ">");
 
-        final String end;
-        final String start;
+        public final String end;
+        public final String start;
 
         ArgumentType(String start, String end) {
             this.start = start;

@@ -1,5 +1,7 @@
 package fr.metro.commands;
 
+import fr.metro.commands.manager.CommandArgument;
+
 public class CommandLook extends Command {
 
     public CommandLook() {

@@ -1,4 +1,6 @@
-package fr.metro.commands;
+package fr.metro.commands.manager;
+
+import fr.metro.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
