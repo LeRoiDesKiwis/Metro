@@ -1,6 +1,7 @@
 package fr.metro.items.weapons;
 
 import fr.metro.characters.GameCharacter;
+import fr.metro.items.Item;
 
 public abstract class Weapon extends Item {
     private int damage ;
