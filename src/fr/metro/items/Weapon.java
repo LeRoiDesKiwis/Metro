@@ -1,7 +1,6 @@
 package fr.metro.items;
 
 import fr.metro.characters.GameCharacter;
-import fr.metro.items.Item;
 
 public abstract class Weapon extends Item {
     private int damage ;
@@ -15,7 +14,7 @@ public abstract class Weapon extends Item {
     }
 
     public Weapon(String name, String description, int damage){
-        super(name, description);
+        super(name, description, ItemType.WEAPON);
         this.damage = damage ;
     }
 }
