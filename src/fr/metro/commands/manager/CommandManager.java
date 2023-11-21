@@ -1,5 +1,6 @@
 package fr.metro.commands.manager;
 
+import fr.metro.characters.Player;
 import fr.metro.commands.*;
 
 import java.util.HashMap;
@@ -8,15 +9,18 @@ import java.util.stream.Stream;
 
 public class CommandManager {
 
+    private Player player;
     private final Map<String, Command> commands = new HashMap<>();
 
-    public CommandManager(){
+    public CommandManager(Player player){
+        this.player = player;
         commands.put("help", new CommandHelp(this));
         commands.put("look", new CommandLook());
         commands.put("attack", new CommandAttack());
         commands.put("take", new CommandTake());
         commands.put("use", new CommandUse());
         commands.put("quit", new CommandQuit());
+        commands.put("talk", new CommandTalk(player));
     }
 
     public Stream<Map.Entry<String, Command>> stream(){

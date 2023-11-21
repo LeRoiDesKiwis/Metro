@@ -35,4 +35,12 @@ public abstract class GameCharacter {
     public void showInventory(){
         inventory.show();
     }
+
+    public boolean hasName(String name) {
+        return name.equals(this.name);
+    }
+
+    public void talk(Player player){
+
+    }
 }

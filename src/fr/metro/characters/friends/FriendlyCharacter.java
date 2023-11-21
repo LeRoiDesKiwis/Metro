@@ -24,4 +24,8 @@ public abstract class FriendlyCharacter extends GameCharacter {
     public void interact(Player player, String[] args) {
         introduce(player);
     }
+
+    public void talk(Player player){
+        introduce(player);
+    }
 }

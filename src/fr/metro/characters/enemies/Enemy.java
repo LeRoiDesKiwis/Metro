@@ -14,4 +14,8 @@ public abstract class Enemy extends GameCharacter {
     }
 
     protected abstract void attack(Player player);
+
+    public void talk(Player player){
+        System.out.println("I don't want to talk to you èwé !");
+    }
 }

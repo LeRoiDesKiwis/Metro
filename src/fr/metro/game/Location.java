@@ -3,14 +3,25 @@ package fr.metro.game;
 import fr.metro.items.Item;
 import fr.metro.characters.GameCharacter;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Location {
     private String description;
-    private final List<Item> stuff = new ArrayList<>();
-    private final List<GameCharacter> characters = new ArrayList<>();
-    private final HashMap<String,Exit> exits = new HashMap<String,Exit>();
+    private final List<Item> stuff;
+    private final List<GameCharacter> characters;
+    private final Map<String,Exit> exits;
+
+    public Location(List<Item> items, List<GameCharacter> characters, Map<String,Exit> exits){
+        this.stuff = items;
+        this.characters = characters;
+        this.exits = exits;
+    }
+
+    public Location(){
+        this(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
+    }
+
+    public Optional<GameCharacter> getCharacterByName(String name){
+        return characters.stream().filter(character -> character.hasName(name)).findAny();
+    }
 }
