@@ -1,12 +1,13 @@
 package fr.metro.game;
 
+import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exit {
-    private Location out;
+    private final Location out;
 
     public Exit(Location out) {
         this.out = out;
@@ -14,6 +15,12 @@ public class Exit {
 
     public boolean canBeOpened(Player player){
         return true;
+    }
+
+    public void move(Player character){
+        if (canBeOpened(character)) {
+            character.move(out);
+        }
     }
 
 }

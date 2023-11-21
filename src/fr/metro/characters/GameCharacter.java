@@ -1,9 +1,13 @@
 package fr.metro.characters;
 
+import fr.metro.game.Location;
+
 public abstract class GameCharacter {
     private int hp;
     private final String name;
     private final Inventory inventory;
+
+    private Location currentLocation ;
 
     protected GameCharacter(String name, int hp, Inventory inventory) {
         this.hp = hp;
@@ -22,6 +26,8 @@ public abstract class GameCharacter {
         this.hp = Math.max(0, this.hp-damage);
     }
     public void heal(int heal){this.hp += heal ;}
+
+    public void move(Location gotoloc){ this.currentLocation = gotoloc ;}
 
     @Override
     public String toString() {
