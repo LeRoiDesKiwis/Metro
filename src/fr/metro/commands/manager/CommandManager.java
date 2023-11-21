@@ -20,7 +20,7 @@ public class CommandManager {
         commands.put("look", new CommandLook());
         commands.put("attack", new CommandAttack());
         commands.put("take", new CommandTake());
-        commands.put("use", new CommandUse());
+        commands.put("use", new CommandUse(player));
         commands.put("quit", new CommandQuit());
         commands.put("talk", new CommandTalk(player));
     }
