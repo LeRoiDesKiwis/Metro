@@ -19,6 +19,7 @@ public class Game {
 
     public void tick(){
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Command: ");
         while(!commandManager.execute(scanner.nextLine())){
             System.out.println();
             System.out.print("La commande a échoué, réessaye : ");

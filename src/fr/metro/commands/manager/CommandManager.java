@@ -4,12 +4,14 @@ import fr.metro.characters.Player;
 import fr.metro.commands.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CommandManager {
 
-    private Player player;
+    private final Player player;
     private final Map<String, Command> commands = new HashMap<>();
 
     public CommandManager(Player player){
@@ -32,18 +34,32 @@ public class CommandManager {
      * @return if the command succeeded or not
      */
     public boolean execute(String input){
+        if(input.isBlank()) return false;
         String[] split = input.split(" ");
         String commandName = split[0];
-        if(commands.containsKey(commandName)) {
-            Command command = commands.get(commandName);
-
-            String[] args = new String[split.length - 1];
-            System.arraycopy(split, 1, args, 0, args.length);
-
-            return command.execute(args);
+        List<String> possibleCommands = getCommand(commandName);
+        switch (possibleCommands.size()) {
+            case 0 -> {
+                System.out.printf("Command %s not found !\n", commandName);
+                return false;
+            }
+            case 1 -> {
+                Command command = commands.get(possibleCommands.get(0));
+                String[] args = new String[split.length - 1];
+                System.arraycopy(split, 1, args, 0, args.length);
+                return command.execute(args);
+            }
+            default -> {
+                System.out.println("Commands starting with \"" + commandName + "\":");
+                possibleCommands.forEach(string -> System.out.println("- " + string));
+            }
         }
-        System.out.printf("Command %s not found !\n", commandName);
+
         return false;
+    }
+
+    public List<String> getCommand(String name){
+        return commands.keySet().stream().filter(command -> command.startsWith(name)).collect(Collectors.toList());
     }
 
 }
