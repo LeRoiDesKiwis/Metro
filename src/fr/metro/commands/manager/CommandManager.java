@@ -21,7 +21,7 @@ public class CommandManager {
         commands.put("attack", new CommandAttack());
         commands.put("take", new CommandTake());
         commands.put("use", new CommandUse(player));
-        commands.put("quit", new CommandQuit());
+        commands.put("quit", new CommandQuit(player));
         commands.put("talk", new CommandTalk(player));
     }
 
