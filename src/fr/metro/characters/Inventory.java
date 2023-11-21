@@ -8,12 +8,14 @@ import fr.metro.items.armors.GasMask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Inventory {
     private final List<Item> items = new ArrayList<>();
     private final Item[] equipment = new Item[4]; // 0 = head, 1 = torso, 2 = legs, 3 = feet
 
-    public Inventory(){
+    public Inventory(Item... items){
+        this.items.addAll(List.of(items));
     }
     public void initEquipment(){
         this.equipment[0]= new GasMask();
@@ -26,7 +28,7 @@ public class Inventory {
         items.add(item);
     }
 
-    public void showInventory(){
+    public void show(){
         int length = this.items.size();
         System.out.println("[--- Inventory ---]");
         for (int i= 0; i<length; i++){
@@ -47,4 +49,11 @@ public class Inventory {
         System.out.println("-------------------");
     }
 
+    public Stream<Item> streamItems() {
+        return items.stream();
+    }
+
+    public <T> boolean hasItem(Class<T> itemClass) {
+        return items.stream().anyMatch(item -> item.getClass().equals(itemClass));
+    }
 }

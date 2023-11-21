@@ -27,4 +27,12 @@ public abstract class GameCharacter {
     public String toString() {
         return name;
     }
+
+    public <T> boolean hasItem(Class<T> itemClass) {
+        return inventory.hasItem(itemClass);
+    }
+
+    public void showInventory(){
+        inventory.show();
+    }
 }
