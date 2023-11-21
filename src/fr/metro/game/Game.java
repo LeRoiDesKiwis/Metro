@@ -22,7 +22,7 @@ public class Game {
         System.out.print("Command: ");
         while(!commandManager.execute(scanner.nextLine())){
             System.out.println();
-            System.out.print("La commande a échoué, réessaye : ");
+            System.out.print("Command failed, please retry : ");
         }
     }
 }
