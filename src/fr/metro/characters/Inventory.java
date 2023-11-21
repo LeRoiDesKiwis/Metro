@@ -12,9 +12,13 @@ import java.util.List;
 public class Inventory {
     private final List<Item> items = new ArrayList<>();
     private final Item[] equipment = new Item[4]; // 0 = head, 1 = torso, 2 = legs, 3 = feet
+    private int money;
 
     public Inventory(){
     }
+    public Inventory(List<Item> items, Item[] equipment, int money){
+    }
+
     public void initEquipment(){
         this.equipment[0]= new GasMask();
         this.equipment[1]= new BasicChestplate();
