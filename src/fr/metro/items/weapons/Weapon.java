@@ -1,4 +1,4 @@
-package fr.metro.items;
+package fr.metro.items.weapons;
 
 import fr.metro.characters.GameCharacter;
 

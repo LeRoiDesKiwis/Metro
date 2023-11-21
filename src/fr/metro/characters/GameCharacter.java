@@ -21,11 +21,11 @@ public abstract class GameCharacter {
     public void damage(int damage){
         this.hp = Math.max(0, this.hp-damage);
     }
-    public void heal(int heal){this.hp = hp+heal ;}
+    public void heal(int heal){this.hp += heal ;}
 
     @Override
     public String toString() {
-        return name;
+        return name + hp ;
     }
 
     public <T> boolean hasItem(Class<T> itemClass) {
