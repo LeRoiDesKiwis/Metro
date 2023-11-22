@@ -3,38 +3,29 @@ package fr.metro.characters.friends;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 
+import java.util.Scanner;
+
 public class SpeakingNPC extends FriendlyCharacter{
 
     private final Dialogue startDialogue;
-    private Dialogue current;
+    private Scanner scanner;
 
-    public SpeakingNPC(String name, int hp, Inventory inventory, String introductionLine, Dialogue dialogue) {
+    public SpeakingNPC(Scanner scanner, String name, int hp, Inventory inventory, String introductionLine, Dialogue dialogue) {
         super(name, hp, inventory, introductionLine);
         this.startDialogue = dialogue;
-        this.current = startDialogue;
+        this.scanner = scanner;
     }
 
     @Override
-    public void interact(Player player, String[] args) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String arg : args) {
-            stringBuilder.append(arg).append(" ");
+    public void talk(Player player) {
+        Dialogue current = startDialogue;
+        while(current.hasNext()){
+            System.out.println(super.name+": "+current);
+            System.out.print(player+": ");
+            String answer = scanner.nextLine();
+            current = current.ask(answer);
+
         }
-        current = current.ask(stringBuilder.toString().trim());
-        System.out.println(current);
-    }
-
-    @Override
-    public void introduce(Player player) {
-        super.introduce(player, current.toString());
-    }
-
-    public void reset(Player player){
-        current = startDialogue;
-        introduce(player);
-    }
-
-    public boolean hasNext() {
-        return current.hasNext();
+        System.out.println(super.name+": "+current);
     }
 }

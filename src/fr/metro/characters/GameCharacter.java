@@ -4,7 +4,7 @@ import fr.metro.game.Location;
 
 public abstract class GameCharacter {
     private int hp;
-    private final String name;
+    protected final String name;
     private final Inventory inventory;
 
     private Location currentLocation ;
