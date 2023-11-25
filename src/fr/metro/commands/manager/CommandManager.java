@@ -36,7 +36,7 @@ public class CommandManager {
     public boolean execute(String input){
         if(input.isBlank()) return false;
         String[] split = input.split(" ");
-        String commandName = split[0];
+        String commandName = split[0].toLowerCase();
         List<String> possibleCommands = getCommand(commandName);
         switch (possibleCommands.size()) {
             case 0 -> {
