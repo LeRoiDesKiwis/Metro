@@ -3,6 +3,7 @@ package fr.metro.characters.enemies;
 import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
+import fr.metro.game.Location;
 
 public abstract class Enemy extends GameCharacter {
     public Enemy(String name, int hp, Inventory inventory) {

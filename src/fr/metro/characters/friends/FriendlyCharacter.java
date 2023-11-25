@@ -3,6 +3,7 @@ package fr.metro.characters.friends;
 import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
+import fr.metro.game.Location;
 
 public abstract class FriendlyCharacter extends GameCharacter {
     private final String introductionLine;

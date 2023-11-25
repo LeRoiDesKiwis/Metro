@@ -7,7 +7,7 @@ public abstract class GameCharacter {
     protected final String name;
     private final Inventory inventory;
 
-    private Location currentLocation ;
+
 
     protected GameCharacter(String name, int hp, Inventory inventory) {
         this.hp = hp;
@@ -27,8 +27,6 @@ public abstract class GameCharacter {
     }
     public void heal(int heal){this.hp += heal ;}
 
-    public void move(Location gotoloc){ this.currentLocation = gotoloc ;}
-
     @Override
     public String toString() {
         return name + hp ;
@@ -42,9 +40,15 @@ public abstract class GameCharacter {
         inventory.show();
     }
 
+    public Inventory getInventory(){
+        return this.inventory ;
+    }
+
     public boolean hasName(String name) {
         return name.equals(this.name);
     }
+
+
 
     public void talk(Player player){
 

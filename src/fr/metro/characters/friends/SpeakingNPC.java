@@ -2,6 +2,7 @@ package fr.metro.characters.friends;
 
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
+import fr.metro.game.Location;
 
 import java.util.Scanner;
 
