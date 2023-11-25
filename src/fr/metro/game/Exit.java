@@ -21,6 +21,7 @@ public class Exit {
         if (canBeOpened(character)) {
             character.move(out);
         }
+        else System.out.println("You can't open that door.");
     }
 
 }
