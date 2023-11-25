@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    public final Player player;
+    private final Player player;
     private final Board board;
     private final CommandManager commandManager;
 
@@ -17,12 +17,24 @@ public class Game {
         this.commandManager = new CommandManager(player);
     }
 
-    public void tick(){
+    public void askCommand(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Command: ");
         while(!commandManager.execute(scanner.nextLine())){
             System.out.println();
             System.out.print("Command failed, please retry : ");
         }
+    }
+
+    public void printInfos(){
+        player.getCurrentLocation().print();
+    }
+
+    /**
+     * Check if the game is running or finished
+     * @return true if the game is running and false is the game is finished
+     */
+    public boolean isRunning() {
+        return true;
     }
 }

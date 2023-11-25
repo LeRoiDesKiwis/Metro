@@ -31,10 +31,10 @@ public class Main {
         Location loc1 = new Location(new ArrayList<>(), new ArrayList<>(), exits, "Salle 1");
 
         Game game = new Game(new Player(name, 10, new Inventory( new Key()),loc1), new Board());
-        while(true) {
-            game.player.getCurrentLocation().printLocation();
-            game.tick();
-
+        while(game.isRunning()) {
+            System.out.println("\n---------");
+            game.printInfos();
+            game.askCommand();
         }
     }
 }

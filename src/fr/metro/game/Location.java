@@ -27,7 +27,7 @@ public class Location {
         return characters.stream().filter(character -> character.hasName(name)).findAny();
     }
 
-    public void printLocation(){
+    public void print(){
         System.out.println(description);
     }
 
