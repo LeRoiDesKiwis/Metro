@@ -1,11 +1,10 @@
 package fr.metro.commands;
 
-import fr.metro.commands.manager.CommandArgument;
-import fr.metro.game.Exit ;
 import fr.metro.characters.Player;
+import fr.metro.commands.manager.CommandArgument;
 
 public class CommandGo extends Command{
-    private Player player ;
+    private final Player player ;
 
     public CommandGo(Player player) {
         super("Move to another room", new CommandArgument("name of an exit"));
@@ -13,7 +12,11 @@ public class CommandGo extends Command{
     }
     @Override
     public boolean execute(String[] args) {
-        player.getCurrentLocation().getExit(args[0]).move(player);
+        if(args.length == 0){
+            System.out.println("Not enough arguments");
+            return false;
+        }
+        player.move(args[0]);
         return true ;
     }
 }

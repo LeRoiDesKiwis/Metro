@@ -6,7 +6,7 @@ import fr.metro.characters.GameCharacter;
 import java.util.*;
 
 public class Location {
-    private String description;
+    private final String description;
     private final List<Item> stuff;
     private final List<GameCharacter> characters;
     private final Map<String,Exit> exits;
@@ -31,7 +31,7 @@ public class Location {
         System.out.println(description);
     }
 
-    public Exit getExit(String exitName){
-        return this.exits.get(exitName);
+    public Optional<Exit> getExit(String exitName){
+        return exits.containsKey(exitName) ? Optional.of(this.exits.get(exitName)) : Optional.empty();
     }
 }

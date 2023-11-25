@@ -10,7 +10,10 @@ public class Player extends GameCharacter {
         this.currentLocation = defaultLocation;
     }
 
-    public void move(Location gotoloc){ this.currentLocation = gotoloc ;}
+    public void move(Location location){ this.currentLocation = location ;}
+    public void move(String exitName){
+        currentLocation.getExit(exitName).ifPresent(exit -> exit.move(this));
+    }
 
     public Location getCurrentLocation() {
         return currentLocation;
