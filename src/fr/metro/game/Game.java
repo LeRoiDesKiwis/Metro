@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    private final Player player;
+    public final Player player;
     private final Board board;
     private final CommandManager commandManager;
 

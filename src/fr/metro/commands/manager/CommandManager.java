@@ -23,6 +23,7 @@ public class CommandManager {
         commands.put("use", new CommandUse(player));
         commands.put("quit", new CommandQuit(player));
         commands.put("talk", new CommandTalk(player));
+        commands.put("go", new CommandGo(player));
     }
 
     public Stream<Map.Entry<String, Command>> stream(){

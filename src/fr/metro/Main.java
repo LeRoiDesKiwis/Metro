@@ -20,10 +20,17 @@ public class Main {
         String name = scanner.nextLine();
         System.out.println();
 
-        Game game = new Game(new Player(name, 10, new Inventory( new Key()),  new Location(List.of(), List.of(new FriendlyCharacter("r", 10, null, "yo [player]") {
-        }), Map.of(), "salle début")), new Board());
+        Location loc2 = new Location("Salle 2");
+        Exit exit = new Exit(loc2);
+        Map exits = new HashMap<String,Exit>();
+        exits.put("Sortie1", exit);
+        Location loc1 = new Location(new ArrayList<>(), new ArrayList<>(), exits, "Salle 1");
+
+        Game game = new Game(new Player(name, 10, new Inventory( new Key()),loc1), new Board());
         while(true) {
+            game.player.getCurrentLocation().printLocation();
             game.tick();
+
         }
     }
 }
