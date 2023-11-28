@@ -2,7 +2,6 @@ package fr.metro.commands.manager;
 
 import fr.metro.characters.Player;
 import fr.metro.commands.*;
-import fr.metro.game.Location;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +34,13 @@ public class CommandManager {
      */
     public boolean execute(String input){
         if(input.isBlank()) return false;
+        if(input.contains(" && ")){
+            String[] commands = input.split(" && ");
+            for(String command : commands){
+                if(!execute(command)) return false;
+            }
+            return true;
+        }
         System.out.println();
         String[] split = input.split(" ");
         String commandName = split[0].toLowerCase();
