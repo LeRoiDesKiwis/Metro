@@ -16,16 +16,25 @@ public class Inventory {
     private final List<Item> items = new ArrayList<>();
     private final Item[] equipment = new Item[4]; // 0 = head, 1 = torso, 2 = legs, 3 = feet
 
-    public Inventory(Item... items){
-        this.items.addAll(List.of(items));
+    public Inventory(List<Item> items){
+        this.items.addAll(items);
 
         this.equipment[0] = new GasMask();
         this.equipment[1] = new BasicChestplate();
         this.equipment[2] = new BasicLegPiece();
         this.equipment[3] = new BasicShoes();
     }
+
+    public Inventory(){
+        this(new ArrayList<>());
+    }
+
     public Optional<Item> getItemByName(String itemName){
         return items.stream().filter(item -> item.hasName(itemName)).findAny();
+    }
+
+    public Optional<? extends Item> getItemByClass(Class<? extends Item> clazz){
+        return items.stream().filter(item -> item.getClass().equals(clazz)).;
     }
 
     public void addItem(Item item){
