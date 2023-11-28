@@ -1,7 +1,6 @@
 package fr.metro.characters;
 
 import fr.metro.Util;
-import fr.metro.items.Filter;
 import fr.metro.items.Item;
 import fr.metro.items.armors.*;
 import fr.metro.items.weapons.Weapon;
@@ -32,7 +31,11 @@ public class Inventory {
     }
 
     public Optional<? extends Item> getItemByClass(Class<? extends Item> clazz){
-        return items.stream().filter(item -> item.getClass().equals(clazz)).findAny();
+        return items.stream().filter(item -> item.getClass().getSuperclass().equals(clazz) || item.getClass().equals(clazz)).findAny();
+    }
+
+    public Optional<? extends Item> getItemByType(Item.ItemType itemType){
+        return items.stream().filter(item -> item.isType(itemType)).findAny();
     }
 
     public GasMask getGasMask(){

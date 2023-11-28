@@ -7,6 +7,7 @@ import fr.metro.items.Item;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Location {
 
@@ -25,7 +26,6 @@ public class Location {
     }
 
     public Location(String name, String description){
-
         this(name, description, new Inventory(), new ArrayList<>(), new HashMap<>());
     }
 
@@ -37,18 +37,13 @@ public class Location {
       return inventory.hasItem(itemName);
     }
 
-
-    public void print(){
-        System.out.println(description);
-    }
-
     public Optional<Exit> getExit(String exitName){
         return exits.entrySet().stream().filter(entry -> entry.getKey().equalsIgnoreCase(exitName)).map(Map.Entry::getValue).findAny();
     }
 
     @Override
     public String toString() {
-        return name;
+        return String.format("%s [%s]", name, description);
     }
 
     public Set<String> exitNames() {
@@ -77,6 +72,10 @@ public class Location {
 
     public void removeItem(Item item) {
         inventory.removeItem(item);
+    }
+
+    public Stream<GameCharacter> streamCharacters() {
+        return characters.stream();
     }
 
     public static class LocationBuilder{

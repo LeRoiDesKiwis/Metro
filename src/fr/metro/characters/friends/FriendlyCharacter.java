@@ -3,7 +3,6 @@ package fr.metro.characters.friends;
 import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
-import fr.metro.game.Location;
 
 public abstract class FriendlyCharacter extends GameCharacter {
     private final String introductionLine;
@@ -24,6 +23,11 @@ public abstract class FriendlyCharacter extends GameCharacter {
 
     public void interact(Player player, String[] args) {
         introduce(player);
+    }
+
+    @Override
+    public void attack(GameCharacter character1, String weaponName) {
+
     }
 
     public void talk(Player player){

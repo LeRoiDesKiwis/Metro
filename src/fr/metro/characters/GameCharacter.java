@@ -1,5 +1,7 @@
 package fr.metro.characters;
 
+import fr.metro.items.weapons.Weapon;
+
 public abstract class GameCharacter {
     private int hp;
     protected final String name;
@@ -25,7 +27,7 @@ public abstract class GameCharacter {
 
     @Override
     public String toString() {
-        return name + hp ;
+        return name + " ("+hp+"HP)" ;
     }
 
     public <T> boolean hasItem(Class<T> itemClass) {
@@ -50,5 +52,11 @@ public abstract class GameCharacter {
 
     public void talk(Player player){
 
+    }
+
+    public void attack(GameCharacter character1, String weaponName) {
+        Weapon weapon = inventory.getWeaponOrDefault(weaponName);
+        System.out.println(name+" attacked "+character1+" with "+weapon.name());
+        weapon.attack(character1);
     }
 }
