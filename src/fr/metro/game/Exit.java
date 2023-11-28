@@ -1,10 +1,6 @@
 package fr.metro.game;
 
-import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Exit {
     private final Location out;
@@ -24,4 +20,8 @@ public class Exit {
         else System.out.println("You can't open that door.");
     }
 
+    @Override
+    public String toString() {
+        return out.toString();
+    }
 }

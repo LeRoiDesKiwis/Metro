@@ -41,8 +41,6 @@ public class Dialogue {
         public DialogueBuilder(String question){
             this.question = question;
         }
-        public DialogueBuilder(){
-        }
 
         public DialogueBuilder question(String question){
             this.question = question;
@@ -54,8 +52,8 @@ public class Dialogue {
             return this;
         }
 
-        public DialogueBuilder addQuestion(String question, Dialogue dialogue){
-            continuity.put(question, dialogue);
+        public DialogueBuilder addQuestion(String question, DialogueBuilder dialogue){
+            continuity.put(question, dialogue.build());
             return this;
         }
 

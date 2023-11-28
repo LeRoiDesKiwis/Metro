@@ -1,17 +1,13 @@
 package fr.metro;
 
-import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
-import fr.metro.characters.friends.SpeakingNPC;
-import fr.metro.game.Board;
-import fr.metro.game.Exit;
 import fr.metro.game.Game;
 import fr.metro.game.Location;
+import fr.metro.game.exits.FinalExit;
 import fr.metro.game.exits.LockedExit;
 import fr.metro.items.Key;
-import fr.metro.items.weapons.Knife;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,13 +23,21 @@ public class Main {
             System.out.println();
         }
 
-        Location loc2 = new Location("Salle 2", "La salle uwu");
-        Exit exit = new Exit(loc2);
-        Map<String, Exit> exits = new HashMap<>();
-        exits.put("Sortie1", exit);
-        Location loc1 = new Location("Salle 1", "la salle kawaii", new ArrayList<>(), List.of(new SpeakingNPC(null, "yo", 10, null, "owo", null)), exits);
+        Location location = new Location.LocationBuilder("Sokoi", "uwu")
+                .addItem(new Key())
+                .addExit(LockedExit.class, new Location.LocationBuilder("Dinamo")
+                        .addExit(new Location.LocationBuilder("Amino"))
+                        .addExit(new Location.LocationBuilder("Dostoievski")
+                                .addExit(new Location.LocationBuilder("Park Kultuty")
+                                        .addExit(LockedExit.class, new Location.LocationBuilder("Armory"))
+                                )
+                                        .addExit(new Location.LocationBuilder("Polis")
+                                                .addExit(FinalExit.class, new Location.LocationBuilder("final")))
+                        )
+                ).build();
 
-        Game game = new Game(new Player(name, 10, new Inventory( new Key()),loc1), new Board());
+        Game game = new Game(new Player(name, 20, location));
+
         while(game.isRunning()) {
             System.out.println("\n---------");
             game.printInfos();

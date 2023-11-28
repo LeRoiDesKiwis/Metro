@@ -5,6 +5,7 @@ import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.items.Item;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Location {
@@ -67,10 +68,84 @@ public class Location {
     }
 
     public void showExits() {
-        Util.display("EXITS", exitNames());
+        System.out.println("[EXITS]");
+        for (String exitName : exitNames()) {
+            Exit exit = exits.get(exitName);
+            System.out.println("- ("+exit.getClass().getSimpleName().toLowerCase()+") "+exitName+" -> "+ exit);
+        }
     }
 
     public void removeItem(Item item) {
         inventory.removeItem(item);
+    }
+
+    public static class LocationBuilder{
+
+        private final String name;
+        private String description = "no description";
+        private final List<Item> items = new ArrayList<>();
+        private final List<GameCharacter> characters = new ArrayList<>();
+        private final Map<String,Exit> exits = new HashMap<>();
+        private int exitIndex = 1;
+        private final List<Location> twoWaysExit = new ArrayList<>();
+
+        public LocationBuilder(String name, String description){
+            this(name);
+            this.description = description;
+        }
+
+        public LocationBuilder(String name){
+            this.name = name.replace(" ", "-");
+        }
+
+        public LocationBuilder addItem(Item item){
+            items.add(item);
+            return this;
+        }
+
+        public LocationBuilder addCharacter(GameCharacter character){
+            characters.add(character);
+            return this;
+        }
+
+        public LocationBuilder addExit(LocationBuilder builder, boolean twoWays){
+            Location location = builder.build();
+            if(twoWays) twoWaysExit.add(location);
+            return addExit(new Exit(location));
+        }
+
+        public LocationBuilder addExit(LocationBuilder builder){
+            return addExit(builder, true);
+        }
+
+        public LocationBuilder addExit(Class<? extends Exit> exit, LocationBuilder builder, boolean twoWays){
+            try {
+                Location location = builder.build();
+
+                if(twoWays) twoWaysExit.add(location);
+                return addExit(exit.getDeclaredConstructor(Location.class).newInstance(builder.build()));
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                     NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public LocationBuilder addExit(Class<? extends Exit> exit, LocationBuilder builder){
+            return addExit(exit, builder, true);
+        }
+
+        private LocationBuilder addExit(Exit exit){
+            exits.put("exit"+(exitIndex++), exit);
+            return this;
+        }
+
+        public Location build(){
+            Location location = new Location(name, description, new Inventory(items), characters, exits);
+            int i = 1;
+            for(Location location1 : twoWaysExit){
+                location1.exits.put("reverse"+(i++), new Exit(location));
+            }
+            return location;
+        }
     }
 }
