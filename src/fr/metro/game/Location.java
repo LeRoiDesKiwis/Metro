@@ -69,4 +69,8 @@ public class Location {
     public void showExits() {
         Util.display("EXITS", exitNames());
     }
+
+    public void removeItem(Item item) {
+        inventory.removeItem(item);
+    }
 }
