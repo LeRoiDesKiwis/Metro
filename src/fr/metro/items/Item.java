@@ -15,6 +15,11 @@ public abstract class Item {
         return String.valueOf(simpleName.charAt(0)).toUpperCase()+simpleName.substring(1).toLowerCase();
     }
 
+    @Override
+    public String toString() {
+        return name();
+    }
+
     public void printItem(){
         System.out.println("- ("+this.itemtype+") "+ name() + " (" + this.description+")");
     }
