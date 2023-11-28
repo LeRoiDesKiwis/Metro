@@ -45,7 +45,7 @@ public class Inventory {
         System.out.println("[--- Equipment ---]");
         for(int i = 0; i < equipment.length; i++){
             String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
-            System.out.println("\t<"+ armorName +">");
+            System.out.println("<"+ armorName +">");
 
             if(this.equipment[i] != null) this.equipment[i].printItemName();
             else System.out.println("\tempty");
