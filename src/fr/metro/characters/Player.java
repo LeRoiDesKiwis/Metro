@@ -2,6 +2,7 @@ package fr.metro.characters;
 
 import fr.metro.game.Exit;
 import fr.metro.game.Location;
+import fr.metro.items.Item;
 import fr.metro.items.Key;
 import fr.metro.items.weapons.Weapon;
 
@@ -28,15 +29,6 @@ public class Player extends GameCharacter {
         this(name, hp, new Inventory(), defaultLocation);
     }
 
-    public void take(String itemName){
-        if(currentLocation.hasItem(itemName)){
-            getInventory().addItem(itemName);
-            System.out.println("Successfully taken" + itemName);
-            return ;
-        }
-        System.out.println("Couldn't take" + itemName);
-    }
-
     public boolean canMove(String exitName) {
         Optional<Exit> exit = currentLocation.getExit(exitName);
         return exit.isPresent() && exit.get().canBeOpened(this);
@@ -54,5 +46,9 @@ public class Player extends GameCharacter {
 
     public <T> void removeItem(Class<T> clazz) {
         inventory.removeItem(clazz);
+    }
+
+    public void addItem(Item item) {
+        inventory.addItem(item);
     }
 }
