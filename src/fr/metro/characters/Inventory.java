@@ -1,5 +1,6 @@
 package fr.metro.characters;
 
+import fr.metro.Util;
 import fr.metro.items.Item;
 import fr.metro.items.armors.BasicChestplate;
 import fr.metro.items.armors.BasicLegPiece;
@@ -27,16 +28,20 @@ public class Inventory {
         return items.stream().filter(item -> item.hasName(itemName)).findAny();
     }
 
-    public void addItem(String itemName){
-        getItemByName(itemName).ifPresent(items::add);
+    public void addItem(Item item){
+        items.add(item);
     }
 
     public void show(){
-        int length = this.items.size();
-        System.out.println("[--- Inventory ---]");
-        for (int i= 0; i<length; i++){
-            items.get(i).printItem();
-        }
+        showItems();
+        showEquipment();
+    }
+
+    public void showItems(){
+        Util.display("ITEMS", items);
+    }
+
+    public void showEquipment(){
         System.out.println("[--- Equipment ---]");
         for(int i = 0; i < equipment.length; i++){
             String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
@@ -44,8 +49,6 @@ public class Inventory {
 
             if(this.equipment[i] != null) this.equipment[i].printItemName();
             else System.out.println("\tempty");
-
-            System.out.println("-------------------");
         }
     }
 
