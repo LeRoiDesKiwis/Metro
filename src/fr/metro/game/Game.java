@@ -8,12 +8,10 @@ import java.util.Scanner;
 public class Game {
 
     private final Player player;
-    private final Board board;
     private final CommandManager commandManager;
 
-    public Game(Player player, Board board) {
+    public Game(Player player) {
         this.player = player;
-        this.board = board;
         this.commandManager = new CommandManager(player);
     }
 
