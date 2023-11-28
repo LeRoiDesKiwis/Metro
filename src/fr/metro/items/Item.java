@@ -1,7 +1,6 @@
 package fr.metro.items;
 
 import fr.metro.characters.GameCharacter;
-import fr.metro.characters.Player;
 
 public abstract class Item {
 
@@ -20,18 +19,11 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return name();
-    }
-
-    public void printItem(){
-        System.out.println("- ("+this.itemtype+") "+ name() + " (" + this.description+")");
+        return "("+this.itemtype+") "+ name() + " : " + this.description;
     }
 
     public boolean hasName(String itemName) {
         return name().equalsIgnoreCase(itemName);
-    }
-    public ItemType getItemtype() {
-        return itemtype;
     }
 
     public void printItemName() {
@@ -39,6 +31,10 @@ public abstract class Item {
     }
 
     public void use(GameCharacter player){
+    }
+
+    public boolean isType(ItemType itemtype){
+        return this.itemtype == itemtype;
     }
     public enum ItemType{
         ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL
