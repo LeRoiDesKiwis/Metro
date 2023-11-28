@@ -44,7 +44,9 @@ public abstract class GameCharacter {
         return name.equals(this.name);
     }
 
-
+    public int getHp() {
+        return hp;
+    }
 
     public void talk(Player player){
 

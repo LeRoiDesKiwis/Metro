@@ -1,5 +1,8 @@
 package fr.metro.items;
 
+import fr.metro.characters.GameCharacter;
+import fr.metro.characters.Player;
+
 public abstract class Item {
 
     protected String description ;
@@ -27,12 +30,19 @@ public abstract class Item {
     public boolean hasName(String itemName) {
         return name().equalsIgnoreCase(itemName);
     }
+    public ItemType getItemtype() {
+        return itemtype;
+    }
 
     public void printItemName() {
         System.out.println(name());
     }
 
+    public void use(GameCharacter player){
+    }
     public enum ItemType{
         ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL
     }
+
+
 }

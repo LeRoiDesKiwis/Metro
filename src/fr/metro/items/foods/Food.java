@@ -11,7 +11,8 @@ public abstract class Food extends Item {
         this.bonus = bonus ;
     }
 
-    public void eat(GameCharacter character){
+    public void use(GameCharacter character){
         character.heal(bonus);
+        System.out.println("Vous avez regagné " + bonus+ " point de vie. PV : " + character.getHp());
     }
 }
