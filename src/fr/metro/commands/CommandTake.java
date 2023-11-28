@@ -24,7 +24,10 @@ public class CommandTake extends Command {
         }
 
         Optional<Item> itemOpt = player.getCurrentLocation().getItemByName(args[0]);
-        itemOpt.ifPresentOrElse(item -> player.addItem(item), () -> System.out.println("Item doesn't exist"));
+        itemOpt.ifPresentOrElse(item -> {
+            player.addItem(item);
+            player.getCurrentLocation().removeItem(item);
+        }, () -> System.out.println("Item doesn't exist"));
 
         return itemOpt.isPresent();
     }

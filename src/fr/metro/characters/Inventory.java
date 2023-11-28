@@ -67,4 +67,8 @@ public class Inventory {
     public <T> void removeItem(Class<T> clazz) {
         items.stream().filter(item -> item.getClass().equals(clazz)).findAny().ifPresent(items::remove);
     }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
 }
