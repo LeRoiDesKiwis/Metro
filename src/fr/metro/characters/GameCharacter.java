@@ -1,13 +1,9 @@
 package fr.metro.characters;
 
-import fr.metro.game.Location;
-
 public abstract class GameCharacter {
     private int hp;
     protected final String name;
     protected final Inventory inventory;
-
-
 
     protected GameCharacter(String name, int hp, Inventory inventory) {
         this.hp = hp;

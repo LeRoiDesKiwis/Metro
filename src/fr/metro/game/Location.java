@@ -1,8 +1,7 @@
 package fr.metro.game;
 
-import fr.metro.items.Item;
 import fr.metro.characters.GameCharacter;
-import fr.metro.items.Key;
+import fr.metro.items.Item;
 
 import java.util.*;
 
@@ -41,11 +40,15 @@ public class Location {
     }
 
     public Optional<Exit> getExit(String exitName){
-        return exits.containsKey(exitName) ? Optional.of(this.exits.get(exitName)) : Optional.empty();
+        return exits.entrySet().stream().filter(entry -> entry.getKey().equalsIgnoreCase(exitName)).map(Map.Entry::getValue).findAny();
     }
 
     @Override
     public String toString() {
         return name;
+    }
+
+    public Set<String> exitNames() {
+        return exits.keySet();
     }
 }

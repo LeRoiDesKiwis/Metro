@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class CommandAttack extends Command {
 
-    private Player player;
+    private final Player player;
 
     public CommandAttack(Player player) {
         super("Attack a NPC", new CommandArgument("name of a npc"), new CommandArgument("weapon to use (fist by default)", CommandArgument.ArgumentType.OPTIONAL));

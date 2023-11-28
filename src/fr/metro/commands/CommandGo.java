@@ -7,13 +7,14 @@ public class CommandGo extends Command{
     private final Player player ;
 
     public CommandGo(Player player) {
-        super("Move to another room", new CommandArgument("name of an exit"));
+        super("Move to another room", new CommandArgument("name of an exit", CommandArgument.ArgumentType.OPTIONAL));
         this.player = player ;
     }
     @Override
     public boolean execute(String[] args) {
         if(args.length == 0){
-            System.out.println("Not enough arguments");
+            System.out.println("List of exists you can go :");
+            player.getCurrentLocation().exitNames().forEach(exit -> System.out.println("\t- "+exit));
             return false;
         }
         String name = args[0].toLowerCase();

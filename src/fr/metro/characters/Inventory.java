@@ -42,7 +42,7 @@ public class Inventory {
             String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
             System.out.println("\t<"+ armorName +">");
 
-            if(this.equipment[i] != null) this.equipment[i].getItemName();
+            if(this.equipment[i] != null) this.equipment[i].printItemName();
             else System.out.println("\tempty");
 
             System.out.println("-------------------");
@@ -59,5 +59,9 @@ public class Inventory {
 
     public boolean hasItem(String itemName) {
         return items.stream().anyMatch(item -> item.hasName(itemName));
+    }
+
+    public <T> void removeItem(Class<T> clazz) {
+        items.stream().filter(item -> item.getClass().equals(clazz)).findAny().ifPresent(items::remove);
     }
 }
