@@ -6,8 +6,8 @@ import fr.metro.items.Item;
 public abstract class Food extends Item {
     private final int bonus ;
 
-    public Food(String name, String description, int bonus){
-        super(name, description, ItemType.FOOD) ;
+    public Food(String description, int bonus){
+        super(description, ItemType.FOOD) ;
         this.bonus = bonus ;
     }
 

@@ -4,10 +4,10 @@ import fr.metro.characters.GameCharacter;
 import fr.metro.items.Item;
 
 public class Weapon extends Item {
-    private int damage ;
+    private int damage;
     @Override
     public String toString(){
-        return name + " (" + description + ")";
+        return name() + " (" + description + ")";
     }
 
     public void attack(GameCharacter character){
@@ -15,7 +15,7 @@ public class Weapon extends Item {
     }
 
     public Weapon(String name, String description, int damage){
-        super(name, description, ItemType.WEAPON);
+        super(description, ItemType.WEAPON);
         this.damage = damage ;
     }
 }

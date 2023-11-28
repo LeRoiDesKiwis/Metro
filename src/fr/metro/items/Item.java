@@ -1,26 +1,30 @@
 package fr.metro.items;
 
 public abstract class Item {
-    protected String name ;
+
     protected String description ;
     private final ItemType itemtype;
 
-    public Item(String name, String description, ItemType itemtype) {
-        this.name = name;
+    public Item(String description, ItemType itemtype) {
         this.description = description;
         this.itemtype = itemtype;
     }
 
-    public void printItem (){
-        System.out.println("- ("+this.itemtype+") "+ this.name + " (" + this.description+")");
+    public String name(){
+        String simpleName = getClass().getSimpleName();
+        return String.valueOf(simpleName.charAt(0)).toUpperCase()+simpleName.substring(1).toLowerCase();
+    }
+
+    public void printItem(){
+        System.out.println("- ("+this.itemtype+") "+ name() + " (" + this.description+")");
     }
 
     public boolean hasName(String itemName) {
-        return name.equalsIgnoreCase(itemName);
+        return name().equalsIgnoreCase(itemName);
     }
 
     public void printItemName() {
-        System.out.println(name);
+        System.out.println(name());
     }
 
     public enum ItemType{

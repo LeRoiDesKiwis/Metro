@@ -4,7 +4,7 @@ public class Filter extends Item {
     private static final int CAPACITY = 10;
     private int capacityLeft ;
     public Filter(){
-        super("Filter", "Allows you to breath the irradiated air", ItemType.SPECIAL);
+        super("Allows you to breath the irradiated air", ItemType.SPECIAL);
         capacityLeft = CAPACITY;
     }
 
