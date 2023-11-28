@@ -5,9 +5,9 @@ public abstract class Item {
     protected String description ;
     private ItemType itemtype;
 
-    public Item(String name, String description, ItemType itemtype){
-        this.name = name ;
-        this.description = description ;
+    public Item(String name, String description, ItemType itemtype) {
+        this.name = name;
+        this.description = description;
         this.itemtype = itemtype;
     }
 
@@ -15,8 +15,8 @@ public abstract class Item {
         System.out.println("- ("+this.itemtype+") "+ this.name + " : " + this.description);
     }
 
-    public void printItemName (){
-        System.out.println("\t" + this.name);
+    public String getItemName (){
+        return this.name;
     }
 
     public enum ItemType{

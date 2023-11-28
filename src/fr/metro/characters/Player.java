@@ -2,6 +2,7 @@ package fr.metro.characters;
 
 import fr.metro.game.Exit;
 import fr.metro.game.Location;
+import fr.metro.items.Item;
 
 import java.util.Optional;
 
@@ -26,6 +27,13 @@ public class Player extends GameCharacter {
         this(name, hp, new Inventory(), defaultLocation);
     }
 
+    /*public void take(String itemName){
+        if(currentLocation.hasItem(itemName)){
+            getInventory().addItem(itemName);
+            System.out.println("Successfully taken" + itemName.getItemName());
+        }
+        System.out.println("Couldn't take" + itemName.getItemName());
+    }*/
 
     public boolean canMove(String exitName) {
         Optional<Exit> exit = currentLocation.getExit(exitName);

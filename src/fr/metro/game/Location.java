@@ -30,6 +30,10 @@ public class Location {
         return characters.stream().filter(character -> character.hasName(name)).findAny();
     }
 
+    //public Boolean hasItem(String itemName){
+      //  return stuff.stream().anyMatch(Item -> ;
+    //}
+
     public void print(){
         System.out.println(description);
     }
