@@ -7,12 +7,17 @@ import fr.metro.game.Location;
 
 public class LockedExit extends Exit {
 
+    private boolean open = false;
+
     public LockedExit(Location out) {
         super(out);
     }
 
     public boolean canBeOpened(Player player){
-        return player.hasItem(Key.class);
+        if(open || player.hasItem(Key.class)){
+            this.open = true;
+            return true;
+        } else return false;
     }
 
     @Override
