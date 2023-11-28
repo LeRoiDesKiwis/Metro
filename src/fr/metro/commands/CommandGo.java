@@ -16,7 +16,14 @@ public class CommandGo extends Command{
             System.out.println("Not enough arguments");
             return false;
         }
-        player.move(args[0]);
+        String name = args[0].toLowerCase();
+        if(!player.canMove(name)){
+            System.out.println("Can't move here !");
+            return false;
+        }
+        System.out.print("Moved from "+player.getCurrentLocation());
+        player.move(name);
+        System.out.println(" to "+player.getCurrentLocation());
         return true ;
     }
 }

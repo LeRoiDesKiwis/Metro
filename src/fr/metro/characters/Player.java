@@ -1,6 +1,9 @@
 package fr.metro.characters;
 
+import fr.metro.game.Exit;
 import fr.metro.game.Location;
+
+import java.util.Optional;
 
 public class Player extends GameCharacter {
 
@@ -24,4 +27,8 @@ public class Player extends GameCharacter {
     }
 
 
+    public boolean canMove(String exitName) {
+        Optional<Exit> exit = currentLocation.getExit(exitName);
+        return exit.isPresent() && exit.get().canBeOpened(this);
+    }
 }

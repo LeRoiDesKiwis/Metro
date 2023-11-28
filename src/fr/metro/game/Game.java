@@ -27,6 +27,7 @@ public class Game {
     }
 
     public void printInfos(){
+        System.out.println(player.getCurrentLocation());
         player.getCurrentLocation().print();
     }
 

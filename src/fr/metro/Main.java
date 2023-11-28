@@ -24,11 +24,11 @@ public class Main {
             System.out.println();
         }
 
-        Location loc2 = new Location("Salle 2");
+        Location loc2 = new Location("Salle 2", "La salle uwu");
         Exit exit = new Exit(loc2);
         Map<String, Exit> exits = new HashMap<>();
         exits.put("Sortie1", exit);
-        Location loc1 = new Location(new ArrayList<>(), new ArrayList<>(), exits, "Salle 1");
+        Location loc1 = new Location("Salle 1", "la salle kawaii", new ArrayList<>(), new ArrayList<>(), exits);
 
         Game game = new Game(new Player(name, 10, new Inventory( new Key()),loc1), new Board());
         while(game.isRunning()) {
