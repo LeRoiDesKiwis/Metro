@@ -3,6 +3,7 @@ package fr.metro.commands;
 import fr.metro.characters.Player;
 import fr.metro.commands.manager.CommandArgument;
 import fr.metro.items.Item;
+import fr.metro.items.armors.GasMask;
 
 import java.util.Optional;
 
@@ -23,8 +24,13 @@ public class CommandUse extends Command {
             player.showInventory();
             return true;
         }
+        if(args[0].equalsIgnoreCase("filter")){
+            player.getInventory().getGasMask().use(player);
+            return true ;
+        }
         Optional<Item> opt = player.getInventory().getItemByName(args[0]);
         opt.filter(item -> item.isType(Item.ItemType.FOOD)).ifPresent(item -> item.use(player));
+
         return opt.isPresent();
     }
 }
