@@ -5,6 +5,7 @@ import fr.metro.items.armors.BasicChestplate;
 import fr.metro.items.armors.BasicLegPiece;
 import fr.metro.items.armors.BasicShoes;
 import fr.metro.items.armors.GasMask;
+import fr.metro.items.weapons.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,5 +51,13 @@ public class Inventory {
 
     public <T> boolean hasItem(Class<T> itemClass) {
         return items.stream().anyMatch(item -> item.getClass().equals(itemClass));
+    }
+
+    public Weapon getWeaponOrDefault(String weaponName) {
+        return items.stream().filter(item -> item.hasName(weaponName)).filter(item -> item instanceof Weapon).map(item -> (Weapon)item).findFirst().orElse(new Weapon("fist", "UPPERCUT !", 2));
+    }
+
+    public boolean hasItem(String itemName) {
+        return items.stream().anyMatch(item -> item.hasName(itemName));
     }
 }

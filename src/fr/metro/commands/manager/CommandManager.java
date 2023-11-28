@@ -18,7 +18,7 @@ public class CommandManager {
         this.player = player;
         commands.put("help", new CommandHelp(this));
         commands.put("look", new CommandLook());
-        commands.put("attack", new CommandAttack());
+        commands.put("attack", new CommandAttack(player));
         commands.put("take", new CommandTake());
         commands.put("use", new CommandUse(player));
         commands.put("quit", new CommandQuit(player));

@@ -3,6 +3,7 @@ package fr.metro.characters;
 import fr.metro.game.Exit;
 import fr.metro.game.Location;
 import fr.metro.items.Item;
+import fr.metro.items.weapons.Weapon;
 
 import java.util.Optional;
 
@@ -39,5 +40,15 @@ public class Player extends GameCharacter {
     public boolean canMove(String exitName) {
         Optional<Exit> exit = currentLocation.getExit(exitName);
         return exit.isPresent() && exit.get().canBeOpened(this);
+    }
+
+    public void attack(GameCharacter character1, String weaponName) {
+        Weapon weapon = inventory.getWeaponOrDefault(weaponName);
+        System.out.println(name+" attacked "+character1+" with "+weapon);
+        weapon.attack(character1);
+    }
+
+    public boolean hasItem(String itemName) {
+        return inventory.hasItem(itemName);
     }
 }

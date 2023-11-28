@@ -12,17 +12,20 @@ public abstract class Item {
     }
 
     public void printItem (){
-        System.out.println("- ("+this.itemtype+") "+ this.name + " : " + this.description);
+        System.out.println("- ("+this.itemtype+") "+ this.name + " (" + this.description+")");
     }
 
     public String getItemName (){
         return this.name;
     }
 
-    public boolean hasName(String name){
-        return name.equals(this.name) ;
+    public boolean hasName(String itemName) {
+        return name.equalsIgnoreCase(itemName);
     }
 
+    public void printItemName() {
+        System.out.println(name);
+    }
 
     public enum ItemType{
         ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL;
