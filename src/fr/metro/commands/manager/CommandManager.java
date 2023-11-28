@@ -2,6 +2,7 @@ package fr.metro.commands.manager;
 
 import fr.metro.characters.Player;
 import fr.metro.commands.*;
+import fr.metro.game.Location;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +12,11 @@ import java.util.stream.Stream;
 
 public class CommandManager {
 
-    private final Player player;
     private final Map<String, Command> commands = new HashMap<>();
 
     public CommandManager(Player player){
-        this.player = player;
         commands.put("help", new CommandHelp(this));
-        commands.put("look", new CommandLook());
+        commands.put("look", new CommandLook(player));
         commands.put("attack", new CommandAttack(player));
         commands.put("take", new CommandTake(player));
         commands.put("use", new CommandUse(player));
@@ -36,6 +35,7 @@ public class CommandManager {
      */
     public boolean execute(String input){
         if(input.isBlank()) return false;
+        System.out.println();
         String[] split = input.split(" ");
         String commandName = split[0].toLowerCase();
         List<String> possibleCommands = getCommand(commandName);
