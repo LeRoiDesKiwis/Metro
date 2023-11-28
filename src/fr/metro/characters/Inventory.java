@@ -8,6 +8,7 @@ import fr.metro.items.armors.GasMask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Inventory {
     private final List<Item> items = new ArrayList<>();
@@ -21,9 +22,12 @@ public class Inventory {
         this.equipment[2] = new BasicLegPiece();
         this.equipment[3] = new BasicShoes();
     }
+    public Optional<Item> getItemByName(String itemName){
+        return items.stream().filter(item -> item.hasName(itemName)).findAny();
+    }
 
-    public void addItem(Item item){
-        items.add(item);
+    public void addItem(String itemName){
+        getItemByName(itemName).ifPresent(items::add);
     }
 
     public void show(){
@@ -37,7 +41,7 @@ public class Inventory {
             String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
             System.out.println("\t<"+ armorName +">");
 
-            if(this.equipment[i] != null) this.equipment[i].printItemName();
+            if(this.equipment[i] != null) this.equipment[i].getItemName();
             else System.out.println("\tempty");
 
             System.out.println("-------------------");

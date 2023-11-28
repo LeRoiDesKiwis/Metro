@@ -19,6 +19,11 @@ public abstract class Item {
         return this.name;
     }
 
+    public boolean hasName(String name){
+        return name.equals(this.name) ;
+    }
+
+
     public enum ItemType{
         ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL;
     }

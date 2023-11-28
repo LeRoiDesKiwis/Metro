@@ -27,13 +27,14 @@ public class Player extends GameCharacter {
         this(name, hp, new Inventory(), defaultLocation);
     }
 
-    /*public void take(String itemName){
+    public void take(String itemName){
         if(currentLocation.hasItem(itemName)){
             getInventory().addItem(itemName);
-            System.out.println("Successfully taken" + itemName.getItemName());
+            System.out.println("Successfully taken" + itemName);
+            return ;
         }
-        System.out.println("Couldn't take" + itemName.getItemName());
-    }*/
+        System.out.println("Couldn't take" + itemName);
+    }
 
     public boolean canMove(String exitName) {
         Optional<Exit> exit = currentLocation.getExit(exitName);

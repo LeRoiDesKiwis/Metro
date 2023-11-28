@@ -2,6 +2,7 @@ package fr.metro.game;
 
 import fr.metro.items.Item;
 import fr.metro.characters.GameCharacter;
+import fr.metro.items.Key;
 
 import java.util.*;
 
@@ -30,9 +31,10 @@ public class Location {
         return characters.stream().filter(character -> character.hasName(name)).findAny();
     }
 
-    //public Boolean hasItem(String itemName){
-      //  return stuff.stream().anyMatch(Item -> ;
-    //}
+    public Boolean hasItem(String itemName){
+      return stuff.stream().anyMatch(Item -> Item.hasName(itemName)) ;
+    }
+
 
     public void print(){
         System.out.println(description);
