@@ -1,11 +1,9 @@
 package fr.metro.characters;
 
 import fr.metro.Util;
+import fr.metro.items.Filter;
 import fr.metro.items.Item;
-import fr.metro.items.armors.BasicChestplate;
-import fr.metro.items.armors.BasicLegPiece;
-import fr.metro.items.armors.BasicShoes;
-import fr.metro.items.armors.GasMask;
+import fr.metro.items.armors.*;
 import fr.metro.items.weapons.Weapon;
 
 import java.util.ArrayList;
@@ -34,7 +32,11 @@ public class Inventory {
     }
 
     public Optional<? extends Item> getItemByClass(Class<? extends Item> clazz){
-        return items.stream().filter(item -> item.getClass().equals(clazz)).;
+        return items.stream().filter(item -> item.getClass().equals(clazz)).findAny();
+    }
+
+    public GasMask getGasMask(){
+        return (GasMask) this.equipment[0];
     }
 
     public void addItem(Item item){
@@ -79,5 +81,9 @@ public class Inventory {
 
     public void removeItem(Item item) {
         items.remove(item);
+    }
+
+    public void equip (Armor myArmor){
+        //String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
     }
 }

@@ -1,10 +1,13 @@
 package fr.metro.items;
 
+import fr.metro.characters.GameCharacter;
+import fr.metro.game.Game;
+
 public class Filter extends Item {
     private static final int CAPACITY = 10;
     private int capacityLeft ;
     public Filter(){
-        super("Allows you to breath the irradiated air", ItemType.SPECIAL);
+        super("Allows you to breath the irradiated air", ItemType.FILTER);
         capacityLeft = CAPACITY;
     }
 
@@ -12,13 +15,16 @@ public class Filter extends Item {
         this.capacityLeft--;
     }
 
-    public void printFilter(){
-        System.out.println("     <!> filter status <!>");
-        System.out.print("[");
+    @Override
+    public String toString(){
+        String s = super.toString() + ("\n     <!> filter status <!>\n");
+        s+=("[");
         for (int i = 0; i<CAPACITY; i++){
-            if(i<capacityLeft){System.out.print(" * ");}
-            else {System.out.print(" - ");}
+            if(i<capacityLeft){s+=(" * ");}
+            else {s+=(" - ");}
         }
-        System.out.print("]");
+        s+=("]");
+        return s;
     }
+
 }

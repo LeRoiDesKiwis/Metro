@@ -37,7 +37,7 @@ public abstract class Item {
         return this.itemtype == itemtype;
     }
     public enum ItemType{
-        ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL
+        ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL, FILTER
     }
 
 

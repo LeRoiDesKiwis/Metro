@@ -4,6 +4,7 @@ import fr.metro.game.Exit;
 import fr.metro.game.Location;
 import fr.metro.items.Item;
 import fr.metro.items.Key;
+import fr.metro.items.armors.GasMask;
 import fr.metro.items.weapons.Weapon;
 
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class Player extends GameCharacter {
     public Location getCurrentLocation() {
         return currentLocation;
     }
+
 
     public Player(String name, int hp, Location defaultLocation){
         this(name, hp, new Inventory(), defaultLocation);
