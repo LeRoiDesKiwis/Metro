@@ -64,4 +64,8 @@ public abstract class GameCharacter {
         weapon.attack(character1);
         if(character1.isDead()) inventory.concat(character1.inventory);
     }
+
+    public void kill() {
+        this.hp = 0;
+    }
 }

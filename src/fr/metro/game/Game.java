@@ -2,6 +2,7 @@ package fr.metro.game;
 
 import fr.metro.characters.Player;
 import fr.metro.commands.manager.CommandManager;
+import fr.metro.items.Filter;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,6 +12,7 @@ public class Game {
     private final Player player;
     private final CommandManager commandManager;
     private final Random random = new Random();
+    private boolean running = true;
 
     public Game(Player player) {
         this.player = player;
@@ -26,13 +28,23 @@ public class Game {
         }
     }
 
-    public void tickEnemies(){
+    public void tick(){
         Location location = player.getCurrentLocation();
         location.streamCharacters().forEach(character -> {
             if(random.nextDouble() >= 0.2f) character.interact(player, new String[0]);
             else System.out.println(character+" missed his attack !");
         });
         location.cleanDeaths();
+        player.getInventory().getItemByClass(Filter.class).map(item -> (Filter)item).ifPresent(filter -> {
+            filter.useFilter();
+            System.out.println(filter);
+            if(filter.isEmpty()) player.kill();
+        });
+
+        if(player.isDead()){
+            running = false;
+            System.out.println("GAME OVER :(");
+        }
     }
 
     public void printInfos(){
@@ -44,6 +56,6 @@ public class Game {
      * @return true if the game is running and false is the game is finished
      */
     public boolean isRunning() {
-        return true;
+        return running;
     }
 }

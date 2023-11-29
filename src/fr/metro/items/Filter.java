@@ -13,9 +13,13 @@ public class Filter extends Item {
         this.capacityLeft--;
     }
 
+    public boolean isEmpty(){
+        return capacityLeft <= 0;
+    }
+
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder(super.toString() + ("\n     <!> filter status <!>\n"));
+        StringBuilder s = new StringBuilder("\n     <!> filter status <!>\n");
         s.append("[");
         for (int i = 0; i < CAPACITY; i++) {
             s.append(i < capacityLeft ? " * " : " - ");
