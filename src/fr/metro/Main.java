@@ -3,7 +3,6 @@ package fr.metro;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 import fr.metro.characters.enemies.Enemy;
-import fr.metro.characters.friends.FriendlyCharacter;
 import fr.metro.game.Game;
 import fr.metro.game.Location;
 import fr.metro.game.exits.FinalExit;
@@ -43,7 +42,7 @@ public class Main {
                                         .addExit(LockedExit.class, new Location.LocationBuilder("Armory", "secret hideout, I hope no one is going to miss these weapons").addItem(new Riffle()).addItem(new Pistol()))
                                 )
                                         .addExit(new Location.LocationBuilder("Polis", "finally some relief").addItem(new Filter())
-                                                .addExit(FinalExit.class, new Location.LocationBuilder("final")))
+                                                .addExit(FinalExit.class, new Location.LocationBuilder("Outdoor", "feel the fresh irradiated air")))
                         )
                 ).build();
 
