@@ -22,7 +22,7 @@ public class FriendlyCharacter extends GameCharacter {
     }
 
     public void interact(Player player, String[] args) {
-        introduce(player);
+        if(args.length > 0) introduce(player);
     }
 
     @Override
