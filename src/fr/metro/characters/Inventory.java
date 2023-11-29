@@ -83,10 +83,6 @@ public class Inventory {
         items.remove(item);
     }
 
-    public void equip (Armor myArmor){
-        //String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
-    }
-
     public void concat(Inventory inventory){
         items.addAll(inventory.items);
     }
