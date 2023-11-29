@@ -17,15 +17,14 @@ public class Filter extends Item {
         return capacityLeft <= 0;
     }
 
-    @Override
-    public String toString() {
+    public void printStatus() {
         StringBuilder s = new StringBuilder("\n     <!> filter status <!>\n");
         s.append("[");
         for (int i = 0; i < CAPACITY; i++) {
             s.append(i < capacityLeft ? " * " : " - ");
         }
         s.append("]");
-        return s.toString();
+        System.out.println(s);
 
     }
 }

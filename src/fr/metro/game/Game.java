@@ -37,7 +37,7 @@ public class Game {
         location.cleanDeaths();
         player.getInventory().getItemByClass(Filter.class).map(item -> (Filter)item).ifPresent(filter -> {
             filter.useFilter();
-            System.out.println(filter);
+            filter.printStatus();
             if(filter.isEmpty()) player.kill();
         });
 
