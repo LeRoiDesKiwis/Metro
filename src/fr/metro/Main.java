@@ -42,7 +42,7 @@ public class Main {
                                 .addExit(new Location.LocationBuilder("Park Kultury", "used to be gorgeous now every last plant is rotten")
                                         .addExit(LockedExit.class, new Location.LocationBuilder("Armory", "secret hideout, I hope no one is going to miss these weapons").addItem(new Riffle()).addItem(new Pistol()))
                                 )
-                                        .addExit(new Location.LocationBuilder("Polis", "finally some relief").addItem(new Filter()).addCharacter(new FriendlyCharacter("Anton", 10, new Inventory(), "Hello, friend"))
+                                        .addExit(new Location.LocationBuilder("Polis", "finally some relief").addItem(new Filter())
                                                 .addExit(FinalExit.class, new Location.LocationBuilder("final")))
                         )
                 ).build();
