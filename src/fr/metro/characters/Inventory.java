@@ -31,10 +31,6 @@ public class Inventory {
         return items.stream().filter(item -> item.hasName(itemName)).findAny();
     }
 
-    public Optional<? extends Item> getItemByClass(Class<? extends Item> clazz){
-        return items.stream().filter(item -> item.getClass().getSuperclass().equals(clazz) || item.getClass().equals(clazz)).findAny();
-    }
-
     public Optional<? extends Item> getItemByType(Item.ItemType itemType){
         return items.stream().filter(item -> item.isType(itemType)).findAny();
     }

@@ -7,7 +7,7 @@ public class GasMask extends Armor {
     private Filter filter;
     @Override
     public void use(GameCharacter player){
-        player.getInventory().getItemByClass(Filter.class).ifPresentOrElse(item -> this.filter = (Filter)item, () -> System.out.println("No filter in inventory."));
+        player.getInventory().getItemByType(ItemType.FILTER).ifPresentOrElse(item -> this.filter = (Filter)item, () -> System.out.println("No filter in inventory."));
         player.getInventory().removeItem(Filter.class);
     }
     public GasMask(){
