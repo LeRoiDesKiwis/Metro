@@ -4,18 +4,17 @@ import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 import fr.metro.characters.enemies.Enemy;
 import fr.metro.characters.friends.FriendlyCharacter;
-import fr.metro.characters.friends.SpeakingNPC;
 import fr.metro.game.Game;
 import fr.metro.game.Location;
 import fr.metro.game.exits.FinalExit;
 import fr.metro.game.exits.LockedExit;
+import fr.metro.items.Filter;
 import fr.metro.items.Key;
 import fr.metro.items.foods.CannedFood;
 import fr.metro.items.foods.Mushroom;
 import fr.metro.items.weapons.Knife;
 import fr.metro.items.weapons.Pistol;
 import fr.metro.items.weapons.Riffle;
-import fr.metro.items.Filter;
 
 import java.util.List;
 import java.util.Scanner;
@@ -43,8 +42,7 @@ public class Main {
                                 .addExit(new Location.LocationBuilder("Park Kultury", "used to be gorgeous now every last plant is rotten")
                                         .addExit(LockedExit.class, new Location.LocationBuilder("Armory", "secret hideout, I hope no one is going to miss these weapons").addItem(new Riffle()).addItem(new Pistol()))
                                 )
-                                        .addExit(new Location.LocationBuilder("Polis", "finally some relief").addItem(new Filter()).addCharacter(new FriendlyCharacter("Anton", 10, new Inventory(), "Hello, friend") {
-                                                })
+                                        .addExit(new Location.LocationBuilder("Polis", "finally some relief").addItem(new Filter()).addCharacter(new FriendlyCharacter("Anton", 10, new Inventory(), "Hello, friend"))
                                                 .addExit(FinalExit.class, new Location.LocationBuilder("final")))
                         )
                 ).build();
@@ -55,7 +53,7 @@ public class Main {
             System.out.println();
             game.printInfos();
             game.askCommand();
-            game.tickEnemies();
+            game.tick();
         }
     }
 }

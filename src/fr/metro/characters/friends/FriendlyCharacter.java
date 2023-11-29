@@ -4,7 +4,7 @@ import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 
-public abstract class FriendlyCharacter extends GameCharacter {
+public class FriendlyCharacter extends GameCharacter {
     private final String introductionLine;
     public FriendlyCharacter(String name, int hp, Inventory inventory, String introductionLine){
         super(name, hp ,inventory);

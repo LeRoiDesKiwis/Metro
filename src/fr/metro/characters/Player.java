@@ -2,6 +2,7 @@ package fr.metro.characters;
 
 import fr.metro.game.Exit;
 import fr.metro.game.Location;
+import fr.metro.items.Filter;
 import fr.metro.items.Item;
 
 import java.util.Optional;
@@ -12,6 +13,7 @@ public class Player extends GameCharacter {
     public Player(String name, int hp, Inventory inventory, Location defaultLocation) {
         super(name, hp, inventory);
         this.currentLocation = defaultLocation;
+        inventory.addItem(new Filter());
     }
 
     public void move(Location location){ this.currentLocation = location ;}
