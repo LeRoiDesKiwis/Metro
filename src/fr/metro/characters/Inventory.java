@@ -71,7 +71,7 @@ public class Inventory {
     }
 
     public Weapon getWeaponOrDefault(String weaponName) {
-        return items.stream().filter(item -> item.hasName(weaponName)).filter(item -> item instanceof Weapon).map(item -> (Weapon)item).findFirst().orElse(new Weapon("fist", "UPPERCUT !", 2));
+        return items.stream().filter(item -> item.hasName(weaponName)).filter(item -> item instanceof Weapon).map(item -> (Weapon)item).findFirst().orElse(new Fist());
     }
 
     public boolean hasItem(String itemName) {
