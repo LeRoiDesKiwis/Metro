@@ -32,6 +32,7 @@ public class Game {
             if(random.nextDouble() >= 0.2f) character.interact(player, new String[0]);
             else System.out.println(character+" missed his attack !");
         });
+        location.cleanDeaths();
     }
 
     public void printInfos(){

@@ -78,6 +78,16 @@ public class Location {
         return characters.stream();
     }
 
+    public void cleanDeaths(){
+        for(Iterator<GameCharacter> iterator = characters.iterator(); iterator.hasNext();){
+            GameCharacter character = iterator.next();
+            if(character.isDead()) {
+                System.out.println(character+" is dead !");
+                iterator.remove();
+            }
+        }
+    }
+
     public static class LocationBuilder{
 
         private final String name;

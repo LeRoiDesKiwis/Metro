@@ -25,6 +25,10 @@ public abstract class GameCharacter {
     }
     public void heal(int heal){this.hp += heal ;}
 
+    public boolean isDead(){
+        return this.hp <= 0;
+    }
+
     @Override
     public String toString() {
         return name + " ("+hp+"HP)" ;
@@ -43,7 +47,7 @@ public abstract class GameCharacter {
     }
 
     public boolean hasName(String name) {
-        return name.equals(this.name);
+        return name.equalsIgnoreCase(this.name);
     }
 
     public int getHp() {
@@ -58,5 +62,6 @@ public abstract class GameCharacter {
         Weapon weapon = inventory.getWeaponOrDefault(weaponName);
         System.out.println(name+" attacked "+character1+" with "+weapon.name());
         weapon.attack(character1);
+        if(character1.isDead()) inventory.concat(character1.inventory);
     }
 }

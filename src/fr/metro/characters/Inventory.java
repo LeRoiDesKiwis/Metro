@@ -3,6 +3,7 @@ package fr.metro.characters;
 import fr.metro.Util;
 import fr.metro.items.Item;
 import fr.metro.items.armors.*;
+import fr.metro.items.weapons.Fist;
 import fr.metro.items.weapons.Weapon;
 
 import java.util.ArrayList;
@@ -88,5 +89,9 @@ public class Inventory {
 
     public void equip (Armor myArmor){
         //String armorName = Item.ItemType.values()[i].toString().replace("ARMOR_", "");
+    }
+
+    public void concat(Inventory inventory){
+        items.addAll(inventory.items);
     }
 }
