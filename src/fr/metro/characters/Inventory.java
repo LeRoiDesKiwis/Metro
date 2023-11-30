@@ -10,22 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//Definition of our Inventory class, with a list of Items, and a array
+//serving as equipement slots for the player
 public class Inventory {
     private final List<Item> items = new ArrayList<>();
     private final Item[] equipment = new Item[4]; // 0 = head, 1 = torso, 2 = legs, 3 = feet
 
+    //Inventory constructor
+    //also initialises the basic equipment
     public Inventory(List<Item> items){
         this.items.addAll(items);
-
         this.equipment[0] = new GasMask();
         this.equipment[1] = new BasicChestplate();
         this.equipment[2] = new BasicLegPiece();
         this.equipment[3] = new BasicShoes();
     }
 
+    //Default Inventory constructor
     public Inventory(){
         this(new ArrayList<>());
     }
+
 
     public Optional<Item> getItemByName(String itemName){
         return items.stream().filter(item -> item.hasName(itemName)).findAny();
@@ -39,19 +44,23 @@ public class Inventory {
         return (GasMask) this.equipment[0];
     }
 
+    //add an item to the inventory
     public void addItem(Item item){
         items.add(item);
     }
 
+    //displays the inventory and equipment
     public void show(){
         showItems();
         showEquipment();
     }
 
+    //displays inventory
     public void showItems(){
         Util.display("ITEMS", items);
     }
 
+    //displays equipment
     public void showEquipment(){
         System.out.println("[--- Equipment ---]");
         for(int i = 0; i < equipment.length; i++){
@@ -79,10 +88,12 @@ public class Inventory {
         items.stream().filter(item -> item.getClass().equals(clazz)).findAny().ifPresent(items::remove);
     }
 
+    //deletes Item from Inventory
     public void removeItem(Item item) {
         items.remove(item);
     }
 
+    //merges an inventory passed as argument to the inventory
     public void concat(Inventory inventory){
         items.addAll(inventory.items);
     }

@@ -15,11 +15,12 @@ public class Enemy extends GameCharacter {
         inventory.getItemByType(Item.ItemType.WEAPON).ifPresent(item -> this.weaponName = item.name());
     }
 
-    //
+    //define the basic interaction with with the player to an attack
     public void interact(Player player, String[] args){
         attack(player, weaponName);
     }
 
+    //defines the basic response when using the talk command with an enemy as an argument
     public void talk(Player player){
         System.out.println("I don't want to talk to you !");
     }
