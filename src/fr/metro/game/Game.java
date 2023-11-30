@@ -4,6 +4,7 @@ import fr.metro.characters.Player;
 import fr.metro.commands.manager.CommandManager;
 import fr.metro.items.Filter;
 import fr.metro.items.Item;
+import fr.metro.items.armors.GasMask;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -41,7 +42,8 @@ public class Game {
             else System.out.println(character+" missed his attack !");
         });
         location.cleanDeaths();
-        player.getInventory().getItemByType(Item.ItemType.FILTER).map(item -> (Filter)item).ifPresent(filter -> {
+        player.getInventory().getArmor(Item.ItemType.ARMOR_HEAD).map(item -> (GasMask)item).ifPresent(mask -> {
+            Filter filter = mask.getFilter();
             filter.useFilter();
             filter.printStatus();
             if(filter.isEmpty()) player.kill();

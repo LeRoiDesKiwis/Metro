@@ -2,7 +2,10 @@ package fr.metro.characters;
 
 import fr.metro.Util;
 import fr.metro.items.Item;
-import fr.metro.items.armors.*;
+import fr.metro.items.armors.BasicChestplate;
+import fr.metro.items.armors.BasicLegPiece;
+import fr.metro.items.armors.BasicShoes;
+import fr.metro.items.armors.GasMask;
 import fr.metro.items.weapons.Fist;
 import fr.metro.items.weapons.Weapon;
 
@@ -41,11 +44,13 @@ public class Inventory {
     public Optional<? extends Item> getItemByType(Item.ItemType itemType){
         return items.stream().filter(item -> item.isType(itemType)).findAny();
     }
-
-    //returns gas mask
-    public GasMask getGasMask(){
-        return (GasMask) this.equipment[0];
+    public Optional<Item> getArmor(Item.ItemType type){
+        for(Item armor : equipment){
+            if(armor.isType(type)) return Optional.of(armor);
+        }
+        return Optional.empty();
     }
+
 
     //add an item to the inventory
     public void addItem(Item item){
