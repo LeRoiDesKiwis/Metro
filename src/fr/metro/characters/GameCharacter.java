@@ -15,15 +15,14 @@ public abstract class GameCharacter {
 
     public void interact(Player player, String[] args){}
 
-    /**
-     * Remove {@code damage} hps from the player. <p/>
-     * If damage>hp, hp will be 0.
-     * @param damage the hp to remove
-     */
+
     public void damage(int damage){
         this.hp = Math.max(0, this.hp-damage);
     }
-    public void heal(int heal){this.hp += heal ;}
+    public void heal(int heal){
+        if (this.hp+heal>=20){this.hp=20;}
+        else {this.hp += heal;}
+    }
 
     public boolean isDead(){
         return this.hp <= 0;
@@ -55,7 +54,6 @@ public abstract class GameCharacter {
     }
 
     public void talk(Player player){
-
     }
 
     public void attack(GameCharacter character1, String weaponName) {
