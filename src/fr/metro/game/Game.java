@@ -16,17 +16,18 @@ public class Game {
     private final CommandManager commandManager;
     private final Random random = new Random();
     private boolean running = true;
+    private final Scanner scanner;
 
     //Game constructor
     public Game(Player player) {
         this.player = player;
         this.commandManager = new CommandManager(player);
+        this.scanner = new Scanner(System.in);
     }
 
     //method used to scan the user responses and redirect them to the execute method
     //in the Command Manager class
     public void askCommand(){
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Command >> ");
         while(!commandManager.execute(scanner.nextLine())){
             System.out.println();
