@@ -4,7 +4,7 @@ import fr.metro.characters.GameCharacter;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 
-//Definition of our FriendlyCharacter classe, subclass of GameCharacter, with an introduction line
+//Definition of our FriendlyCharacter class, subclass of GameCharacter, with an introduction line
 public class FriendlyCharacter extends GameCharacter {
     private final String introductionLine;
     //FriendlyCharacter constructor
