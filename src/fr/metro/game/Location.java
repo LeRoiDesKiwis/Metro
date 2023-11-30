@@ -18,6 +18,7 @@ public class Location {
     private final List<GameCharacter> characters;
     private final Map<String,Exit> exits;
 
+    //Location constructor
     public Location(String name, String description, Inventory inventory, List<GameCharacter> characters, Map<String,Exit> exits){
         this.inventory = inventory;
         this.characters = characters;
@@ -26,22 +27,28 @@ public class Location {
         this.name = name;
     }
 
+    //Location basic constructor
     public Location(String name, String description){
         this(name, description, new Inventory(), new ArrayList<>(), new HashMap<>());
     }
 
+    //finds a character in a location from a given name
     public Optional<GameCharacter> getCharacterByName(String name){
         return characters.stream().filter(character -> character.hasName(name)).findAny();
     }
 
+    //returns true if it finds an item in a location from a given name
     public boolean hasItem(String itemName){
       return inventory.hasItem(itemName);
     }
 
+    //returns an exit if it finds one from a given name
     public Optional<Exit> getExit(String exitName){
         return exits.entrySet().stream().filter(entry -> entry.getKey().equalsIgnoreCase(exitName)).map(Map.Entry::getValue).findAny();
     }
 
+    //overrides toString method
+    //returns a String describing a location
     @Override
     public String toString() {
         return String.format("%s [%s]", name, description);
@@ -63,6 +70,7 @@ public class Location {
         inventory.showItems();
     }
 
+    //displays the exits in the room
     public void showExits() {
         System.out.println("[EXITS]");
         for (String exitName : exitNames()) {
@@ -71,9 +79,11 @@ public class Location {
         }
     }
 
+    //removes a given item from the location
     public void removeItem(Item item) {
         inventory.removeItem(item);
     }
+
 
     public Stream<GameCharacter> streamCharacters() {
         return characters.stream();
@@ -89,6 +99,7 @@ public class Location {
         }
     }
 
+    //
     public static class LocationBuilder{
 
         private final String name;

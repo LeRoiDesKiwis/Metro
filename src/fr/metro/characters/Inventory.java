@@ -32,14 +32,17 @@ public class Inventory {
     }
 
 
+    //finds any item using the string itemname
     public Optional<Item> getItemByName(String itemName){
         return items.stream().filter(item -> item.hasName(itemName)).findAny();
     }
 
+    //gets an item using an itemType given
     public Optional<? extends Item> getItemByType(Item.ItemType itemType){
         return items.stream().filter(item -> item.isType(itemType)).findAny();
     }
 
+    //returns gas mask
     public GasMask getGasMask(){
         return (GasMask) this.equipment[0];
     }
@@ -72,17 +75,21 @@ public class Inventory {
         }
     }
 
+
     public <T> boolean hasItem(Class<T> itemClass) {
         return items.stream().anyMatch(item -> item.getClass().equals(itemClass));
     }
 
+    //find a weapon in inventory if non existent we return the default weapon (fist)
     public Weapon getWeaponOrDefault(String weaponName) {
         return items.stream().filter(item -> item.hasName(weaponName)).filter(item -> item instanceof Weapon).map(item -> (Weapon)item).findFirst().orElse(new Fist());
     }
 
+    //returns true if it finds an item with the same name as the String ItemName
     public boolean hasItem(String itemName) {
         return items.stream().anyMatch(item -> item.hasName(itemName));
     }
+
 
     public <T> void removeItem(Class<T> clazz) {
         items.stream().filter(item -> item.getClass().equals(clazz)).findAny().ifPresent(items::remove);
