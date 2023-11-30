@@ -74,11 +74,11 @@ public class Location {
         inventory.removeItem(item);
     }
 
-
+    //Return stream of character
     public Stream<GameCharacter> streamCharacters() {
         return characters.stream();
     }
-
+    //Removed dead GameCharacter from Location
     public void cleanDeaths(){
         for(Iterator<GameCharacter> iterator = characters.iterator(); iterator.hasNext();){
             GameCharacter character = iterator.next();
@@ -88,7 +88,7 @@ public class Location {
             }
         }
     }
-
+    //Declaration of LocationBuilder class
     public static class LocationBuilder{
 
         private final String name;
@@ -98,36 +98,36 @@ public class Location {
         private final Map<String,Exit> exits = new HashMap<>();
         private int exitIndex = 1;
         private final List<Location> twoWaysExit = new ArrayList<>();
-
+        //Constructor from name and description
         public LocationBuilder(String name, String description){
             this(name);
             this.description = description;
         }
-
+        //Called in the preceding method, replace space in name by -
         public LocationBuilder(String name){
             this.name = name.replace(" ", "-");
         }
-
+        //add item to location
         public LocationBuilder addItem(Item item){
             items.add(item);
             return this;
         }
-
+        //add character to location
         public LocationBuilder addCharacter(GameCharacter character){
             characters.add(character);
             return this;
         }
-
+        //Add exit to location, can specify if two ways exit or not
         public LocationBuilder addExit(LocationBuilder builder, boolean twoWays){
             Location location = builder.build();
             if(twoWays) twoWaysExit.add(location);
             return addExit(new Exit(location));
         }
-
+        //add exit to location, two ways exit by default
         public LocationBuilder addExit(LocationBuilder builder){
             return addExit(builder, true);
         }
-
+        //add special exit, can specify if two ways exit or not
         public LocationBuilder addExit(Class<? extends Exit> exit, LocationBuilder builder, boolean twoWays){
             try {
                 Location location = builder.build();
@@ -139,16 +139,16 @@ public class Location {
                 throw new RuntimeException(e);
             }
         }
-
+        //add special exit, two ways exit by default
         public LocationBuilder addExit(Class<? extends Exit> exit, LocationBuilder builder){
             return addExit(exit, builder, true);
         }
-
+        //Add exit to exits list, called in all method above
         private LocationBuilder addExit(Exit exit){
             exits.put("exit"+(exitIndex++), exit);
             return this;
         }
-
+        //Build LocationBuilder to Location
         public Location build(){
             Location location = new Location(name, description, new Inventory(items), characters, exits);
             int i = 1;

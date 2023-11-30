@@ -5,16 +5,16 @@ import fr.metro.commands.manager.CommandArgument;
 import fr.metro.items.Item;
 
 import java.util.Optional;
-
+//Declaration of our CommandTake class
 public class CommandTake extends Command {
 
     private final Player player;
-
+    //Constructor of CommandTake
     public CommandTake(Player player) {
         super("add (if possible) the argument to the hero’s items", new CommandArgument("Item to be added"));
         this.player = player;
     }
-
+    //Overrides execute to add item args[0] to player's inventory and delete from Location's inventory
     @Override
     public boolean execute(String[] args) {
         if(args.length == 0){

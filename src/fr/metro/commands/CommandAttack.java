@@ -5,16 +5,16 @@ import fr.metro.characters.Player;
 import fr.metro.commands.manager.CommandArgument;
 
 import java.util.Optional;
-
+//Declaration of our CommandAttack class
 public class CommandAttack extends Command {
 
     private final Player player;
-
+    //Constructor of CommandAttack
     public CommandAttack(Player player) {
         super("Attack a NPC", new CommandArgument("name of a npc"), new CommandArgument("weapon to use (fist by default)", CommandArgument.ArgumentType.OPTIONAL));
         this.player = player;
     }
-
+    //Overrides execute to attack the GameCharacter in args[0] with weapon in args[1]
     @Override
     public boolean execute(String[] args) {
         if(args.length == 0){

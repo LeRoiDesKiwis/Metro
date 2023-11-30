@@ -5,20 +5,21 @@ import fr.metro.commands.manager.CommandManager;
 
 import java.util.Map;
 import java.util.Optional;
-
+//Declaration of our CommandHelp class
 public class CommandHelp extends Command{
 
     private final CommandManager commandManager;
-
+    //constructor of Command Help
     public CommandHelp(CommandManager commandManager){
         super("show commands with their description", new CommandArgument("command", CommandArgument.ArgumentType.OPTIONAL));
         this.commandManager = commandManager;
     }
+    //Print example of how to use command
     private void printExample(Command command) {
         if(command.example.isBlank()) return;
         System.out.println("\t- EXAMPLE: "+command.example);
     }
-
+    //Print command name and arguments
     private void printUsage(String commandName, Command command){
         if(command.arguments.length == 0) return;
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,14 +29,14 @@ public class CommandHelp extends Command{
         stringBuilder.deleteCharAt(stringBuilder.length()-1);
         System.out.println("\t- USAGE: " + commandName + " " + stringBuilder);
     }
-
+    //Print description of CommandHelp
     private void helpCommand(String commandName, Command command){
         System.out.println("- " + commandName);
         System.out.println("\t- DESCRIPTION: " + command.description);
         printUsage(commandName, command);
         printExample(command);
     }
-
+    //Overrides execute to print commands documentation
     @Override
     public boolean execute(String[] args) {
 

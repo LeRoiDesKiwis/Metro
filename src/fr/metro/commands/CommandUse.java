@@ -6,18 +6,18 @@ import fr.metro.items.Item;
 import fr.metro.items.armors.GasMask;
 
 import java.util.Optional;
-
+//Declaration of our CommandUse class
 public class CommandUse extends Command {
 
     private final Player player;
-
+    //Constructor of CommandUse
     public CommandUse(Player player) {
         super("uses the object arg1. In case a second argument is given, the first one is used with the second. For example, use gun bullet may load the gun, which can be used after that.",
                 "use gun bullet may load the gun, which can be used after that.",
                 new CommandArgument("item"), new CommandArgument("item to be used with the first", CommandArgument.ArgumentType.OPTIONAL));
         this.player = player;
     }
-
+    //Overrides execute to use item args[0], if no argument display player's inventory
     @Override
     public boolean execute(String[] args) {
         if(args.length == 0) {

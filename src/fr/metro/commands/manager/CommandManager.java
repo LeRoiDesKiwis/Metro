@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+//Definition of our CommandManager class
 public class CommandManager {
 
     private final Map<String, Command> commands = new HashMap<>();
-
+    //Initialize CommandManager with all of our commands
     public CommandManager(Player player){
         commands.put("help", new CommandHelp(this));
         commands.put("look", new CommandLook(player));
@@ -23,15 +23,12 @@ public class CommandManager {
         commands.put("talk", new CommandTalk(player));
         commands.put("go", new CommandGo(player));
     }
-
+    //return stream of our Command
     public Stream<Map.Entry<String, Command>> stream(){
         return commands.entrySet().stream();
     }
 
-    /**
-     * @param input User input (commandName + args)
-     * @return if the command succeeded or not
-     */
+   //execute the Command given in input, if found
     public boolean execute(String input){
         if(input.isBlank()) return false;
         if(input.contains(" && ")){
@@ -64,7 +61,7 @@ public class CommandManager {
 
         return false;
     }
-
+    //return list of command matching name
     public List<String> getCommand(String name){
         return commands.keySet().stream().filter(command -> command.startsWith(name)).collect(Collectors.toList());
     }

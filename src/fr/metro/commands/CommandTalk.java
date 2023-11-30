@@ -6,16 +6,16 @@ import fr.metro.commands.manager.CommandArgument;
 import fr.metro.game.Location;
 
 import java.util.Optional;
-
+//Declaration of our CommandTalk class
 public class CommandTalk extends Command {
 
     private Player player;
-
+    //Constructor of CommandTalk
     public CommandTalk(Player player) {
         super("talk to a NPC", new CommandArgument("The NPC you want to talk to"));
         this.player = player;
     }
-
+    //Overrides execute to talk to args[0] GameCharacter
     @Override
     public boolean execute(String[] args) {
         if(args.length == 0) {
