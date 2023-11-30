@@ -57,7 +57,7 @@ public class Game {
 
     //displays informations about where the player currently is
     public void printInfos(){
-        System.out.println("Location: "+player.getCurrentLocation());
+        System.out.println(player +" | Location: "+player.getCurrentLocation());
     }
 
 
