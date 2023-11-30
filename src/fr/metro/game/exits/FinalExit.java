@@ -11,7 +11,7 @@ public class FinalExit extends Exit {
 
     @Override
     public void move(Player character) {
-        System.out.println("\n~~~~~~~~~ Congratulations ! You finish the game ~~~~~~~~~");
+        System.out.println("\n~~~~~~~~~ Congratulations ! You finished the game ~~~~~~~~~");
         System.exit(0);
     }
 }

@@ -34,7 +34,7 @@ public class Main {
 
         Location location = new Location.LocationBuilder("Sokol", "every story need a beginning")
                 .addItem(new Key())
-                .addCharacter(new Enemy("Piotr, lonely survivor", 5, new Inventory(List.of(new Knife()))))
+                .addCharacter(new Enemy("Piotr", 5, new Inventory(List.of(new Knife()))))
                 .addExit(LockedExit.class, new Location.LocationBuilder("Dynamo", "an old metro station, looks clear")
                         .addExit(new Location.LocationBuilder("Amino", "used to be crowded with mutated creatures").addItem(new Key())) .addCharacter(new Enemy("mutated USSR Soldier", 10, new Inventory(List.of(new Pistol()))))
                         .addExit(new Location.LocationBuilder("Dostoievski", "an old Red Line Reserve").addItem(new Filter()).addItem(new CannedFood()).addItem(new Mushroom())
