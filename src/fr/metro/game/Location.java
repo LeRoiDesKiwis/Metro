@@ -45,14 +45,17 @@ public class Location {
         return exits.keySet();
     }
 
+    //returns an item if the given name corresponds to a given string
     public Optional<Item> getItemByName(String itemName) {
         return inventory.getItemByName(itemName);
     }
 
+    //displays characters in a locaiton
     public void showCharacters() {
         Util.display("CHARACTER", characters);
     }
 
+    //displays items in a location
     public void showItems(){
         inventory.showItems();
     }

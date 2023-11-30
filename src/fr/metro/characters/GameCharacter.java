@@ -50,21 +50,26 @@ public abstract class GameCharacter {
         inventory.show();
     }
 
+    //getter for inventory
     public Inventory getInventory(){
         return this.inventory ;
     }
 
+    //verifies if a character has a given name
     public boolean hasName(String name) {
         return name.equalsIgnoreCase(this.name);
     }
 
+    //getter for hps
     public int getHp() {
         return hp;
     }
 
+    //defines method talk only for it to be overridden
     public void talk(Player player){
     }
 
+    //handles attacks and drops
     public void attack(GameCharacter character1, String weaponName) {
         Weapon weapon = inventory.getWeaponOrDefault(weaponName);
         System.out.println(name+" attacked "+character1+" with "+weapon.name());
@@ -72,6 +77,7 @@ public abstract class GameCharacter {
         if(character1.isDead()) inventory.concat(character1.inventory);
     }
 
+    //kills a character
     public void kill() {
         this.hp = 0;
     }
