@@ -3,6 +3,8 @@ package fr.metro;
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
 import fr.metro.characters.enemies.Enemy;
+import fr.metro.characters.friends.Dialogue;
+import fr.metro.characters.friends.SpeakingNPC;
 import fr.metro.game.Game;
 import fr.metro.game.Location;
 import fr.metro.game.exits.FinalExit;
@@ -34,7 +36,7 @@ public class Main {
 
         Location location = new Location.LocationBuilder("Sokol", "every story need a beginning")
                 .addItem(new Key())
-                .addCharacter(new Enemy("Piotr", 5, new Inventory(List.of(new Knife()))))
+                .addCharacter(new SpeakingNPC(new Scanner(System.in), "Arya", 10, new Inventory(),"Hello" + name, new Dialogue.DialogueBuilder("I feel a perturbation in the metro").addFinalAnswer("Where are we ?", "We are in the Moscow underground metro").addFinalAnswer("What is going on ?", "The rats they're coming this way").addFinalAnswer("What should I do", "You need to go, fast.").build()))
                 .addExit(LockedExit.class, new Location.LocationBuilder("Dynamo", "an old metro station, looks clear")
                         .addExit(new Location.LocationBuilder("Amino", "used to be crowded with mutated creatures").addItem(new Key())) .addCharacter(new Enemy("mutated USSR Soldier", 10, new Inventory(List.of(new Pistol()))))
                         .addExit(new Location.LocationBuilder("Dostoievski", "an old Red Line Reserve").addItem(new Filter()).addItem(new CannedFood()).addItem(new Mushroom())

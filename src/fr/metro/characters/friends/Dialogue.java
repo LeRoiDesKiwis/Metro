@@ -35,7 +35,7 @@ public class Dialogue {
     public static class DialogueBuilder {
         private String question;
         private final Map<String, Dialogue> continuity = new HashMap<>();
-        private String error = "Wtf are you saying bro";
+        private String error = "Sorry I didn't understand that.";
 
         public DialogueBuilder(String question){
             this.question = question;
