@@ -6,7 +6,7 @@ import fr.metro.game.Location;
 //Declaration of our CommandLook class
 public class CommandLook extends Command {
 
-    private Player player;
+    private final Player player;
     //CommandLook constructor
     public CommandLook(Player player) {
         super("Displays a description of the current location or any arguments that can be observed.", new CommandArgument("what we want to observe (items/pnjs)", CommandArgument.ArgumentType.OPTIONAL));

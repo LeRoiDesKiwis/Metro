@@ -1,7 +1,6 @@
 package fr.metro.items.foods;
 
 import fr.metro.characters.GameCharacter;
-import fr.metro.items.Filter;
 import fr.metro.items.Item;
 
 //Definition of our Class food, defined by the health bonus

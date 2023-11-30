@@ -2,14 +2,13 @@ package fr.metro.characters.friends;
 
 import fr.metro.characters.Inventory;
 import fr.metro.characters.Player;
-import fr.metro.game.Location;
 
 import java.util.Scanner;
 
 //Definition of our SpeakingNPC class, subclass of FriendlyCharacter, with a dialogue and possibility for a scanner
 public class SpeakingNPC extends FriendlyCharacter{
     private final Dialogue startDialogue;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     //SpeakingNPC constructor
     public SpeakingNPC(Scanner scanner, String name, int hp, Inventory inventory, String introductionLine, Dialogue dialogue) {

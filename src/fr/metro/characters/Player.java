@@ -50,7 +50,7 @@ public class Player extends GameCharacter {
         inventory.removeItem(clazz);
     }
 
-    //adds a item to the inventory
+    //adds an item to the inventory
     public void addItem(Item item) {
         inventory.addItem(item);
     }

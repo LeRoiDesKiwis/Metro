@@ -4,7 +4,7 @@ import fr.metro.characters.Player;
 //Declaration of our CommandQuit class
 public class CommandQuit extends Command {
 
-    private Player player;
+    private final Player player;
     //Constructor of CommandQuit
     public CommandQuit(Player player) {
         super("quit the game");
