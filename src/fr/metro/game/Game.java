@@ -19,10 +19,10 @@ public class Game {
     private final Scanner scanner;
 
     //Game constructor
-    public Game(Player player) {
+    public Game(Scanner scanner, Player player) {
         this.player = player;
         this.commandManager = new CommandManager(player);
-        this.scanner = new Scanner(System.in);
+        this.scanner = scanner;
     }
 
     //method used to scan the user responses and redirect them to the execute method

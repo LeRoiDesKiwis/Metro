@@ -21,12 +21,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         String name;
         if(args.length > 0){
             name = args[0];
             System.out.println("Username detected : "+name);
         } else {
-            Scanner scanner = new Scanner(System.in);
 
             System.out.print("What's your name ? ");
             name = scanner.nextLine();
@@ -35,7 +35,7 @@ public class Main {
 
         Location location = new Location.LocationBuilder("Sokol", "every story need a beginning")
                 .addItem(new Key())
-                .addCharacter(new SpeakingNPC(new Scanner(System.in), "Anna", 10, new Inventory(),"Hello" + name, new Dialogue.DialogueBuilder("Something feels wrong...").addFinalAnswer("Where are we ?", "We are in Moscow, dumba**").addFinalAnswer("What is going on ?", "The rats... they're coming this way").addFinalAnswer("What should I do ?", "You need to go, fast.").build()))
+                .addCharacter(new SpeakingNPC(scanner, "Anna", 10, new Inventory(),"Hello" + name, new Dialogue.DialogueBuilder("Something feels wrong...").addFinalAnswer("Where are we ?", "We are in Moscow, dumba**").addFinalAnswer("What is going on ?", "The rats... they're coming this way").addFinalAnswer("What should I do ?", "You need to go, fast.").build()))
                 .addExit(LockedExit.class, new Location.LocationBuilder("Dinamo", "an old metro station, looks clear")
                         .addExit(new Location.LocationBuilder("Amino", "used to be crowded with mutated creatures").addItem(new Key())) .addCharacter(new Enemy("Soldier", 5, new Inventory(List.of(new Pistol())))).addItem(new Filter())
                         .addExit(new Location.LocationBuilder("Dostoievski", "an old Red Line Reserve").addItem(new Filter()).addItem(new CannedFood()).addItem(new Mushroom())
@@ -47,7 +47,7 @@ public class Main {
                         )
                 ).build();
 
-        Game game = new Game(new Player(name, 20, location));
+        Game game = new Game(scanner, new Player(name, 20, location));
 
         while(game.isRunning()) {
             System.out.println();
