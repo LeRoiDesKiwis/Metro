@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 //Definition of our SpeakingNPC class, subclass of FriendlyCharacter, with a dialogue and possibility for a scanner
 public class SpeakingNPC extends FriendlyCharacter{
-
     private final Dialogue startDialogue;
     private Scanner scanner;
 

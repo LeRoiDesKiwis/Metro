@@ -2,8 +2,8 @@ package fr.metro.commands;
 
 import fr.metro.commands.manager.CommandArgument;
 
+//Description of our Command class, with a command description, a command argument and an example
 public abstract class Command {
-
     protected final String description;
     protected final CommandArgument[] arguments;
     protected String example;
@@ -22,11 +22,6 @@ public abstract class Command {
         this(description, "");
     }
 
-    /**
-     *
-     * @param args command arguments (example : ATTACK name weapon : name and weapon are the arguments)
-     * @return if the command succeeded or not
-     */
     public abstract boolean execute(String[] args);
 
 }

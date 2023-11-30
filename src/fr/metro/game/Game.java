@@ -53,13 +53,13 @@ public class Game {
         }
     }
 
-    //prints infos on where the player currently is
+    //displays informations about where the player currently is
     public void printInfos(){
         System.out.println("Location: "+player.getCurrentLocation());
     }
 
 
-    // returns a true boolean if the game is running
+    //returns a true boolean if the game is running
     public boolean isRunning() {
         return running;
     }
