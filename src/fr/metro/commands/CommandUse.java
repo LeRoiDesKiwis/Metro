@@ -25,7 +25,7 @@ public class CommandUse extends Command {
             return true;
         }
         if(args[0].equalsIgnoreCase("filter")){
-            player.getInventory().getGasMask().use(player);
+            player.getInventory().getArmor(Item.ItemType.ARMOR_HEAD).map(item -> (GasMask)item).ifPresent(mask -> mask.use(player));
             return true ;
         }
         Optional<Item> opt = player.getInventory().getItemByName(args[0]);
