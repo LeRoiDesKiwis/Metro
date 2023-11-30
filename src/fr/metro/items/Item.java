@@ -27,27 +27,27 @@ public abstract class Item {
     public String toString() {
         return "("+this.itemtype+") "+ name() + " : " + this.description;
     }
-    
-    //Verifie si une chaine de caractère correspond à un item
+
+    //Verifies if a given string corresponds to an item
     public boolean hasName(String itemName) {
         return name().equalsIgnoreCase(itemName);
     }
 
-    //Affiche le nom d'un item
+    //Displays an item's name
     public void printItemName() {
         System.out.println(name());
     }
 
-    //Definition de la commande use pour être Override dans les sous-classes
+    //method used declared for it to overridden in subclasses
     public void use(GameCharacter player){
     }
 
-    //Verifie si un item est du même itemType que celui en passé paramètre
+    //Checks if an item is from given type
     public boolean isType(ItemType itemtype){
         return this.itemtype == itemtype;
     }
 
-    //Definition de notre type énuméré ItemType
+    //Definition of our enum type
     public enum ItemType{
         ARMOR_HEAD, ARMOR_TORSO, ARMOR_LEG, ARMOR_FEET, WEAPON, FOOD, SPECIAL, FILTER
     }
