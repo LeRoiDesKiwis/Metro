@@ -58,10 +58,6 @@ public class Game {
         System.out.println("Location: "+player.getCurrentLocation());
     }
 
-    /**
-     * Check if the game is running or finished
-     * @return true if the game is running and false is the game is finished
-     */
 
     // returns a true boolean if the game is running
     public boolean isRunning() {
