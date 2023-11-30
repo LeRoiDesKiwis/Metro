@@ -9,8 +9,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.stream.Stream;
 
+//Defintion of our Location class, with a name, description, an "inventory" aka the items available
+//in the room, a list of characters in the room and map that links our exits with their names
 public class Location {
-
     private final String name;
     private final String description;
     private final Inventory inventory;

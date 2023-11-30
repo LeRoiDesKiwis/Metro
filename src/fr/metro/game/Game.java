@@ -9,7 +9,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
     private final Player player;
     private final CommandManager commandManager;
     private final Random random = new Random();

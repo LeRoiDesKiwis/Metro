@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Dialogue {
-
     private final String question;
     private Map<String, Dialogue> continuity = new HashMap<>();
     private String unknownAnswer;
