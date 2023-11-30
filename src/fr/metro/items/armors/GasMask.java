@@ -16,7 +16,7 @@ public class GasMask extends Armor {
 
     //Gasmask constructor
     public GasMask(){
-        super("Gas Mask", "Old gas mask built before the war", ItemType.ARMOR_HEAD);
+        super("Old gas mask built before the war", ItemType.ARMOR_HEAD);
         filter = new Filter();
     }
 

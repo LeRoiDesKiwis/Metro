@@ -6,7 +6,7 @@ import fr.metro.items.Item;
 //There is no real benefit for wearing armor in the game
 //but we wanted to add the gas mask mechanic and keep the game modular
 public abstract class Armor extends Item {
-    public Armor(String name, String description, ItemType itemType){
+    public Armor(String description, ItemType itemType){
         super(description, itemType);
     }
 }
