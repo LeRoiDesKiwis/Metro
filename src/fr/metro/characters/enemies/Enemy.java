@@ -15,7 +15,7 @@ public class Enemy extends GameCharacter {
         inventory.getItemByType(Item.ItemType.WEAPON).ifPresent(item -> this.weaponName = item.name());
     }
 
-    //define the basic interaction with with the player to an attack
+    //defines the basic interaction with the player, to an attack
     public void interact(Player player, String[] args){
         attack(player, weaponName);
     }
