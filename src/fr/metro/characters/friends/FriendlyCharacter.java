@@ -35,6 +35,7 @@ public class FriendlyCharacter extends GameCharacter {
     public void attack(GameCharacter character1, String weaponName) {
     }
 
+    
     public void talk(Player player){
         introduce(player);
     }

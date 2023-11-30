@@ -1,6 +1,7 @@
 package fr.metro.items;
 
 //Definition of our Filter class, subclass of Item, with a max capacity and a remaining capacity
+
 public class Filter extends Item {
     private static final int CAPACITY = 10;
     private int capacityLeft;

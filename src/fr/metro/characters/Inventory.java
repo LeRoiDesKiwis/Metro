@@ -75,7 +75,7 @@ public class Inventory {
         }
     }
 
-
+    //checks if an item of class clazz is present in inventory
     public <T> boolean hasItem(Class<T> itemClass) {
         return items.stream().anyMatch(item -> item.getClass().equals(itemClass));
     }
@@ -91,6 +91,7 @@ public class Inventory {
     }
 
 
+    //removes an item of class clazz
     public <T> void removeItem(Class<T> clazz) {
         items.stream().filter(item -> item.getClass().equals(clazz)).findAny().ifPresent(items::remove);
     }

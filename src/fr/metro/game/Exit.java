@@ -2,6 +2,7 @@ package fr.metro.game;
 
 import fr.metro.characters.Player;
 
+
 public class Exit {
     private final Location out;
 

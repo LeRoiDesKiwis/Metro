@@ -42,10 +42,12 @@ public class Player extends GameCharacter {
         return exit.isPresent() && exit.get().canBeOpened(this);
     }
 
+    //checks if an item is the inventory from a given name
     public boolean hasItem(String itemName) {
         return inventory.hasItem(itemName);
     }
 
+    //removes item of class clazz from inventory
     public <T> void removeItem(Class<T> clazz) {
         inventory.removeItem(clazz);
     }
