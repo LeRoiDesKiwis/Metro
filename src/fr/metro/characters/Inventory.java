@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 //Definition of our Inventory class, with a list of Items, and a array
-//serving as equipement slots for the player
+//serving as equipment slots for the player
 public class Inventory {
     private final List<Item> items = new ArrayList<>();
     private final Item[] equipment = new Item[4]; // 0 = head, 1 = torso, 2 = legs, 3 = feet
