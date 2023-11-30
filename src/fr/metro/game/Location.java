@@ -27,22 +27,9 @@ public class Location {
         this.name = name;
     }
 
-    //Location basic constructor
-    public Location(String name, String description){
-        this(name, description, new Inventory(), new ArrayList<>(), new HashMap<>());
-    }
-
-    //finds a character in a location from a given name
     public Optional<GameCharacter> getCharacterByName(String name){
         return characters.stream().filter(character -> character.hasName(name)).findAny();
     }
-
-    //returns true if it finds an item in a location from a given name
-    public boolean hasItem(String itemName){
-      return inventory.hasItem(itemName);
-    }
-
-    //returns an exit if it finds one from a given name
     public Optional<Exit> getExit(String exitName){
         return exits.entrySet().stream().filter(entry -> entry.getKey().equalsIgnoreCase(exitName)).map(Map.Entry::getValue).findAny();
     }
@@ -99,7 +86,6 @@ public class Location {
         }
     }
 
-    //
     public static class LocationBuilder{
 
         private final String name;
