@@ -19,18 +19,18 @@ public class CommandUse extends Command {
     }
     //Overrides execute to use item args[0], if no argument display player's inventory
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         if(args.length == 0) {
             player.showInventory();
-            return true;
+            return CommandStatus.SUCCESS;
         }
         if(args[0].equalsIgnoreCase("filter")){
             player.getInventory().getArmor(Item.ItemType.ARMOR_HEAD).map(item -> (GasMask)item).ifPresent(mask -> mask.use(player));
-            return true ;
+            return CommandStatus.UPDATE;
         }
         Optional<Item> opt = player.getInventory().getItemByName(args[0]);
         opt.filter(item -> item.isType(Item.ItemType.FOOD)).ifPresent(item -> item.use(player));
 
-        return opt.isPresent();
+        return CommandStatus.failOr(opt.isPresent(), CommandStatus.UPDATE);
     }
 }

@@ -12,9 +12,9 @@ public class CommandQuit extends Command {
     }
     //Overrides execute to quit the game
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         System.out.printf("Good bye %s :'(", player);
         System.exit(0);
-        return true;
+        return CommandStatus.SUCCESS;
     }
 }

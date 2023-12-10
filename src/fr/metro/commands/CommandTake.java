@@ -16,10 +16,10 @@ public class CommandTake extends Command {
     }
     //Overrides execute to add item args[0] to player's inventory and delete from Location's inventory
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         if(args.length == 0){
             System.out.println("Not enough arguments !");
-            return false;
+            return CommandStatus.FAILED;
         }
 
         Optional<Item> itemOpt = player.getCurrentLocation().getItemByName(args[0]);
@@ -28,6 +28,6 @@ public class CommandTake extends Command {
             player.getCurrentLocation().removeItem(item);
         }, () -> System.out.println("Item doesn't exist"));
 
-        return itemOpt.isPresent();
+        return CommandStatus.failOr(itemOpt.isPresent(), CommandStatus.UPDATE);
     }
 }

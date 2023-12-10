@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 public class CommandLook extends Command {
 
     private final Player player;
-    private Map<String, Consumer<Location>> arguments = new HashMap<>();
+    private final Map<String, Consumer<Location>> arguments = new HashMap<>();
 
     //CommandLook constructor
     public CommandLook(Player player) {
@@ -30,16 +30,16 @@ public class CommandLook extends Command {
     }
     //Overrides execute to print items, characters and exits in the player's location
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         Location location = player.getCurrentLocation();
         if(args.length == 0 || !arguments.containsKey(args[0])){
             System.out.println("Arguments available for this command:");
             arguments.forEach((key, value) -> System.out.println("\t- "+key));
-            return true;
+            return CommandStatus.SUCCESS;
         }
 
         arguments.get(args[0]).accept(location);
 
-        return true;
+        return CommandStatus.UPDATE;
     }
 }

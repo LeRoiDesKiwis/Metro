@@ -1,6 +1,7 @@
 package fr.metro.game;
 
 import fr.metro.characters.Player;
+import fr.metro.commands.Command;
 import fr.metro.commands.manager.CommandManager;
 import fr.metro.items.Filter;
 import fr.metro.items.Item;
@@ -17,6 +18,7 @@ public class Game {
     private final Random random = new Random();
     private boolean running = true;
     private final Scanner scanner;
+    private Command.CommandStatus currentStatus;
 
     //Game constructor
     public Game(Scanner scanner, Player player) {
@@ -29,7 +31,7 @@ public class Game {
     //in the Command Manager class
     public void askCommand(){
         System.out.print("Command >> ");
-        while(!commandManager.execute(scanner.nextLine())){
+        while((currentStatus = commandManager.execute(scanner.nextLine())) == Command.CommandStatus.FAILED){
             System.out.println();
             System.out.print("Command failed, please retry : ");
         }
@@ -37,6 +39,10 @@ public class Game {
 
     //method used to keep track of "turns", the attacks and the player's death
     public void tick(){
+        if(currentStatus != Command.CommandStatus.UPDATE) {
+            System.out.println("\n[INFO] You executed a non-update command, nothing happened.");
+            return;
+        }
         Location location = player.getCurrentLocation();
         location.streamCharacters().forEach(character -> {
             if(random.nextDouble() >= 0.2f) character.interact(player, new String[0]);

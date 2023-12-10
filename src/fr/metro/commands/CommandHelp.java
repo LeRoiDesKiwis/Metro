@@ -38,7 +38,7 @@ public class CommandHelp extends Command{
     }
     //Overrides execute to print commands documentation
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
 
         if(args.length == 0) {
 
@@ -52,12 +52,12 @@ public class CommandHelp extends Command{
             System.out.println("NOTE: in usage, " + builder);
 
             commandManager.stream().forEach(entry -> helpCommand(entry.getKey(), entry.getValue()));
-            return true;
+            return CommandStatus.SUCCESS;
         } else {
             String commandName = args[0];
             Optional<Command> commandOpt = commandManager.stream().filter(entry -> entry.getKey().equals(commandName)).map(Map.Entry::getValue).findAny();
             commandOpt.ifPresent(command -> helpCommand(commandName, command));
-            return commandOpt.isPresent();
+            return CommandStatus.failOr(commandOpt.isPresent(), CommandStatus.SUCCESS);
         }
 
     }

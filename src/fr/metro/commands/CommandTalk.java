@@ -17,14 +17,14 @@ public class CommandTalk extends Command {
     }
     //Overrides execute to talk to args[0] GameCharacter
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         if(args.length == 0) {
             System.out.println("Error: you must provide the npc's name !");
-            return false;
+            return CommandStatus.FAILED;
         }
         Location currentLocation = player.getCurrentLocation();
         Optional<GameCharacter> character = currentLocation.getCharacterByName(args[0]);
         character.ifPresentOrElse(character1 -> character1.talk(player), () -> System.out.println("Error: NPC not found"));
-        return character.isPresent();
+        return CommandStatus.failOr(character.isPresent(), CommandStatus.UPDATE);
     }
 }

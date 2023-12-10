@@ -29,14 +29,21 @@ public class CommandManager {
     }
 
    //execute the Command given in input, if found
-    public boolean execute(String input){
-        if(input.isBlank()) return false;
+    public Command.CommandStatus execute(String input){
+        if(input.isBlank()) return Command.CommandStatus.FAILED;
         if(input.contains(" && ")){
+            System.out.println("Multiple commands detected !");
             String[] commands = input.split(" && ");
+            Command.CommandStatus status = Command.CommandStatus.SUCCESS;
+            int i = 0;
             for(String command : commands){
-                if(!execute(command)) return false;
+                System.out.println("----- ("+((i++)+1)+"/"+commands.length+") -----");
+                System.out.println("Executing "+command+"...");
+                Command.CommandStatus currentStatus = execute(command);
+                status = Command.CommandStatus.highest(status, currentStatus);
+                if(currentStatus == Command.CommandStatus.FAILED) return Command.CommandStatus.FAILED;
             }
-            return true;
+            return status;
         }
         System.out.println();
         String[] split = input.split(" ");
@@ -45,7 +52,7 @@ public class CommandManager {
         switch (possibleCommands.size()) {
             case 0 -> {
                 System.out.printf("Command %s not found !\n", commandName);
-                return false;
+                return Command.CommandStatus.FAILED;
             }
             case 1 -> {
                 Command command = commands.get(possibleCommands.get(0));
@@ -56,10 +63,9 @@ public class CommandManager {
             default -> {
                 System.out.println("Commands starting with \"" + commandName + "\":");
                 possibleCommands.forEach(string -> System.out.println("- " + string));
+                return Command.CommandStatus.SUCCESS;
             }
         }
-
-        return false;
     }
     //return list of command matching name
     public List<String> getCommand(String name){

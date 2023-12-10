@@ -12,20 +12,20 @@ public class CommandGo extends Command{
     }
     //Overrides execute to move character by args[0] exit if he can open the exit
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         if(args.length == 0){
             System.out.println("List of exists you can go :");
             player.getCurrentLocation().exitNames().forEach(exit -> System.out.println("\t- "+exit));
-            return false;
+            return CommandStatus.SUCCESS;
         }
         String name = args[0].toLowerCase();
         if(!player.canMove(name)){
             System.out.println("Can't move here !");
-            return false;
+            return CommandStatus.FAILED;
         }
         System.out.print("Moved from "+player.getCurrentLocation());
         player.move(name);
         System.out.println(" to "+player.getCurrentLocation());
-        return true ;
+        return CommandStatus.UPDATE;
     }
 }

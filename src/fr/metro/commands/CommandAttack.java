@@ -16,20 +16,20 @@ public class CommandAttack extends Command {
     }
     //Overrides execute to attack the GameCharacter in args[0] with weapon in args[1]
     @Override
-    public boolean execute(String[] args) {
+    public CommandStatus execute(String[] args) {
         if(args.length == 0){
             System.out.println("Not enough arguments !");
-            return false;
+            return CommandStatus.FAILED;
         }
         String weaponName;
         if(args.length > 1){
             if(!player.hasItem(args[1])) {
                 System.out.println("Player doesn't have the weapon "+ args[1] +" !");
-                return false;
+                return CommandStatus.FAILED;
             } else weaponName = args[1];
         } else weaponName = "";
         Optional<GameCharacter> character1 = player.getCurrentLocation().getCharacterByName(args[0]);
         character1.ifPresentOrElse(character -> player.attack(character, weaponName), () -> System.out.println("Character "+args[0]+" doesn't exist !"));
-        return character1.isPresent();
+        return CommandStatus.failOr(character1.isPresent(), CommandStatus.UPDATE);
     }
 }
